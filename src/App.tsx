@@ -1,35 +1,32 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Suspense } from "react";
 import "./App.css";
+import Page from "./components/page";
+
+async function mockSlowRequest(): Promise<string> {
+  const response = await new Promise<string>((resolve) => {
+    // Simulate a delay of 2 seconds (2000 milliseconds)
+    setTimeout(() => {
+      resolve("Data retrieved after a slow request!");
+    }, 2000);
+    console.log("mockSlowRequest");
+  });
+  return response;
+}
 
 function App() {
-  const [count, setCount] = useState(0);
+  const response = mockSlowRequest();
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Suspense fallback={<Loading />}>
+        <Page response={response} />
+      </Suspense>
     </>
   );
+}
+
+function Loading() {
+  return <h2>🌀 Loading...</h2>;
 }
 
 export default App;
