@@ -2,23 +2,15 @@ import { Suspense } from "react";
 import "./App.css";
 import Page from "./components/page";
 
-// async function mockSlowRequest(): Promise<string> {
-//   const response = await new Promise<string>((resolve) => {
-//     // Simulate a delay of 2 seconds (2000 milliseconds)
-//     setTimeout(() => {
-//       resolve("Data retrieved after a slow request!");
-//     }, 2000);
-//     console.log("mockSlowRequest");
-//   });
-//   return response;
-// }
+// TODO implement error handling for use API
+// Read React 19 docs
 
 function App() {
   return (
     <>
-      <div></div>
       <Suspense fallback={<Loading />}>
-        <Page></Page>
+        {/* <Page></Page> */}
+        <div>Placeholder</div>
       </Suspense>
     </>
   );
