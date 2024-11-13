@@ -2,24 +2,23 @@ import { Suspense } from "react";
 import "./App.css";
 import Page from "./components/page";
 
-async function mockSlowRequest(): Promise<string> {
-  const response = await new Promise<string>((resolve) => {
-    // Simulate a delay of 2 seconds (2000 milliseconds)
-    setTimeout(() => {
-      resolve("Data retrieved after a slow request!");
-    }, 2000);
-    console.log("mockSlowRequest");
-  });
-  return response;
-}
+// async function mockSlowRequest(): Promise<string> {
+//   const response = await new Promise<string>((resolve) => {
+//     // Simulate a delay of 2 seconds (2000 milliseconds)
+//     setTimeout(() => {
+//       resolve("Data retrieved after a slow request!");
+//     }, 2000);
+//     console.log("mockSlowRequest");
+//   });
+//   return response;
+// }
 
 function App() {
-  const response = mockSlowRequest();
-
   return (
     <>
+      <div></div>
       <Suspense fallback={<Loading />}>
-        <Page response={response} />
+        <Page></Page>
       </Suspense>
     </>
   );
