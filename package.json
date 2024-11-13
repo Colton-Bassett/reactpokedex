@@ -16,7 +16,8 @@
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
     "react": "19.0.0-rc-2ec26bc4-20241111",
-    "react-dom": "19.0.0-rc-2ec26bc4-20241111"
+    "react-dom": "19.0.0-rc-2ec26bc4-20241111",
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

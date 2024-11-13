@@ -1,6 +1,6 @@
 import { use } from "react";
 
-export default function Page() {
+export default function Pokemon() {
   const response = use(
     fetch(`https://pokeapi.co/api/v2/pokemon/1/`).then((res) => res.json()),
   );
