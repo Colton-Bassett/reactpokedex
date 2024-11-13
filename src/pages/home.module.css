@@ -1,0 +1,10 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 2rem;
+  padding-bottom: 5rem;
+}
