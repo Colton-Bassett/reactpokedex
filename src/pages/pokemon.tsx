@@ -7,9 +7,9 @@ export default function Pokemon() {
   //   console.log(response);
 
   return (
-    <div>
+    <>
       {/* <pre>{JSON.stringify(response, null, 2)}</pre> */}
       <h1>Pokemon Page</h1>
-    </div>
+    </>
   );
 }
