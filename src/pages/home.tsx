@@ -1,6 +1,6 @@
-import { Suspense } from "react";
-import Page from "./pokemon";
 import styles from "./home.module.css";
+import PokemonCard from "../components/pokemonCard";
+import { Box, Grid2 } from "@mui/material";
 
 export default function Home() {
   const rows = [
@@ -20,10 +20,22 @@ export default function Home() {
 
   return (
     <>
-      <h1>Home</h1>
-      {/* <Suspense fallback={<Loading />}>
+      <Box className={styles.home}>
+        <h1>Home</h1>
+        {/* <Suspense fallback={<Loading />}>
         <Page />
       </Suspense> */}
+        <Grid2
+          container
+          rowSpacing={1}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          className={styles.homeGrid}
+        >
+          {rows.map((p) => (
+            <PokemonCard />
+          ))}
+        </Grid2>
+      </Box>
     </>
   );
 }

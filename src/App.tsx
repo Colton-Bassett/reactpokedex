@@ -1,20 +1,21 @@
 import { Suspense } from "react";
-// import "./App.module.css";
-import Pokemon from "./pages/pokemon";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home";
+import { Box } from "@mui/material";
+
 import Nav from "./components/nav";
 import Footer from "./components/footer";
-import styles from "./App.module.css";
+import Home from "./pages/home";
+import Pokemon from "./pages/pokemon";
 import Admin from "./pages/admin";
-import { Box } from "@mui/material";
+
+import styles from "./App.module.css";
 
 // TODO implement error handling for use API
 // Read React 19 docs
 
 function App() {
   return (
-    <>
+    <Box className={styles.container}>
       <Nav />
       <Box component="main" className={styles.main}>
         <Routes>
@@ -31,7 +32,7 @@ function App() {
         </Routes>
       </Box>
       <Footer />
-    </>
+    </Box>
   );
 }
 

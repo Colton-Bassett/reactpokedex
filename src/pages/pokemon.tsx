@@ -17,7 +17,7 @@ export default function Pokemon() {
           color: "var(--primary-color)",
         }}
       >
-        <h1>Hello I'm Card</h1>
+        <h3>Hello I'm Card</h3>
       </Card>
     </>
   );

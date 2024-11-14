@@ -7,4 +7,16 @@
   min-width: 100vw;
   padding: 2rem;
   padding-bottom: 5rem; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 56rem;
+}
+
+.homeGrid {
+  justify-content: center;
+  align-items: center;
 }
