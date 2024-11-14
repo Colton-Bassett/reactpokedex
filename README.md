@@ -61,7 +61,7 @@ export default tseslint.config({
 
 ## Todo
 
-- [ ] Project scaffolding (materialui, emotion, prettier, etc)
+- [x] Project scaffolding (materialui, emotion, prettier, etc)
 - [ ] Host project on Firebase Hosting
 - [ ] Build out basic UI
 - [ ] Implement PokeAPI calls
