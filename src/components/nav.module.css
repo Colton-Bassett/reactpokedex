@@ -4,4 +4,7 @@
   align-items: center;
   border-bottom: 1px solid black;
   padding: 0 1.75rem;
+
+  background-color: var(--background-color);
+  color: var(--primary-color);
 }

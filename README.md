@@ -84,3 +84,11 @@ export default tseslint.config({
 - [ ] Analytics
 
 ## Review
+
+- using Material UI's 'sx' prop -- which is the system's solution to customizing css -- is pretty terrible. Looks exactly the same as vanilla html inline css style={{}} syntax. A strict downgrade to typescript
+
+- i really am not a fan of the styled components solution either. It has benefits for sure, but I just don't like how there's huge blocks of styling i have to scroll past to get to the real code. There's also the issue of performance with both the above approaches.
+
+- maybe they have great use-cases in enterprise level solutions where projects get exponentially big, but for smaller projects like these it feels like a lot of boiler plate and a lot of wasted time
+
+- probably sticking with external css files and css modules. More performant + separation of converns. Probably just wishing I had tailwind tbh

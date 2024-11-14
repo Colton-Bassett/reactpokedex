@@ -6,6 +6,8 @@ import Home from "./pages/home";
 import Nav from "./components/nav";
 import Footer from "./components/footer";
 import styles from "./App.module.css";
+import Admin from "./pages/admin";
+import { Box } from "@mui/material";
 
 // TODO implement error handling for use API
 // Read React 19 docs
@@ -14,7 +16,7 @@ function App() {
   return (
     <>
       <Nav />
-      <main className={styles.main}>
+      <Box component="main" className={styles.main}>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route
@@ -25,8 +27,9 @@ function App() {
               </Suspense>
             }
           ></Route>
+          <Route path="/admin" element={<Admin />}></Route>
         </Routes>
-      </main>
+      </Box>
       <Footer />
     </>
   );
