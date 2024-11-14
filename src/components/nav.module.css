@@ -1,10 +1,25 @@
+.container {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  box-shadow:
+    0 0 0 0 #0000,
+    0 0 0 0 #0000,
+    0 16px 32px -16px rgba(0, 0, 0, 0.1),
+    0 0 0 1px hsla(0, 0%, 100%, 0.05);
+}
+
 .nav {
   display: flex;
   height: 4rem;
   align-items: center;
-  border-bottom: 1px solid black;
-  padding: 0 1.75rem;
 
-  background-color: var(--background-color);
-  color: var(--primary-color);
+  padding: 0 1.75rem;
+  gap: 1rem;
+}
+
+.logoLink {
+  display: flex;
 }

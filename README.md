@@ -85,6 +85,7 @@ export default tseslint.config({
 
 ## Review
 
+- MATERIAL UI
 - using Material UI's 'sx' prop -- which is the system's solution to customizing css -- is pretty terrible. Looks exactly the same as vanilla html inline css style={{}} syntax. A strict downgrade to typescript
 
 - i really am not a fan of the styled components solution either. It has benefits for sure, but I just don't like how there's huge blocks of styling i have to scroll past to get to the real code. There's also the issue of performance with both the above approaches.
@@ -92,3 +93,10 @@ export default tseslint.config({
 - maybe they have great use-cases in enterprise level solutions where projects get exponentially big, but for smaller projects like these it feels like a lot of boiler plate and a lot of wasted time
 
 - probably sticking with external css files and css modules. More performant + separation of converns. Probably just wishing I had tailwind tbh
+
+- MUI is still stuck on material 2, they're working on material 3. But material 3 came out literally 2 or 3 years ago.
+
+- REACT
+
+- no image component like next.js
+- no native ssr
