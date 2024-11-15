@@ -1,5 +1,5 @@
 import styles from "./home.module.css";
-import PokemonCard from "../components/pokemonCard";
+import PokemonCard, { PokemonList } from "../components/pokemonCard";
 import { Box, Grid2 } from "@mui/material";
 
 export default function Home() {
@@ -25,16 +25,11 @@ export default function Home() {
         {/* <Suspense fallback={<Loading />}>
         <Page />
       </Suspense> */}
-        <Grid2
-          container
-          rowSpacing={1}
-          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-          className={styles.homeGrid}
-        >
+        <PokemonList>
           {rows.map((p) => (
-            <PokemonCard />
+            <PokemonCard key={p.id} id={p.id} name={p.name} type={p.type} />
           ))}
-        </Grid2>
+        </PokemonList>
       </Box>
     </>
   );

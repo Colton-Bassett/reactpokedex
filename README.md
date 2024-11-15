@@ -97,6 +97,9 @@ export default tseslint.config({
 - MUI is still stuck on material 2, they're working on material 3. But material 3 came out literally 2 or 3 years ago.
 
 - aint now way they called this thing <grid2>
+
+- kind of drowning in css files, something I forgot about with tailwind
+
 - REACT
 
 - no image component like next.js
