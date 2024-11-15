@@ -21,7 +21,6 @@ export default function Home() {
   return (
     <>
       <Box className={styles.home}>
-        <h1>Home</h1>
         {/* <Suspense fallback={<Loading />}>
         <Page />
       </Suspense> */}

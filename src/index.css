@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   font-family:
     "Optimistic Display",
@@ -25,8 +31,10 @@
   --primary-color: #f6f7f9;
   --secondary-color: #58c4dc;
   --background-color: #23272f;
+  --background-secondary-color: #16181d;
   --background-paper-color: #343a46;
   --text-color: #f6f7f9;
+  --text-secondary-color: #99a1b3;
 }
 
 a {

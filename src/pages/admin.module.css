@@ -1,0 +1,23 @@
+.adminContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  /* width: calc(100vw - 4rem); */
+  max-width: 56rem;
+  width: 100%;
+}
+
+.adminCardContainer {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.adminCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 240px;
+  height: 350px;
+}
