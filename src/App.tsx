@@ -9,6 +9,8 @@ import Pokemon from "./pages/pokemon";
 import Admin from "./pages/admin";
 
 import styles from "./App.module.css";
+import Help from "./pages/help";
+import Disclaimer from "./pages/disclaimer";
 
 // TODO implement error handling for use API
 // Read React 19 docs
@@ -28,6 +30,8 @@ function App() {
               </Suspense>
             }
           ></Route>
+          <Route path="/help" element={<Help />}></Route>
+          <Route path="/disclaimer" element={<Disclaimer />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       </Box>
