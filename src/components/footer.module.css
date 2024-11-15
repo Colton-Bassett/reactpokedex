@@ -23,6 +23,15 @@
 
 .logoLink {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
   height: 38.4px;
   width: 42.675px;
+}
+
+.logoText {
+  margin-left: 1rem !important;
 }

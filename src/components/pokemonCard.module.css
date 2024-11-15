@@ -2,11 +2,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 220px;
   min-width: 200px;
+
+  border-radius: 1rem !important;
+  cursor: pointer;
+}
+
+.pokemonCard:hover {
+  box-shadow:
+    0 0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 0 rgba(0, 0, 0, 0),
+    inset 0 0 0 1px hsla(0, 0%, 100%, 0.08) !important;
 }
 
 .name {
   text-align: center;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 96px;
+  min-width: 96px;
 }
 
 .typeContainer {
@@ -14,5 +33,21 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  margin-top: 1rem;
   text-align: center;
+}
+
+.type {
+  min-width: 40px;
+  padding: 4px 10px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  font-size: 0.75rem !important;
+}
+
+.pokemonListGrid {
+  justify-content: center;
+  align-items: center;
 }

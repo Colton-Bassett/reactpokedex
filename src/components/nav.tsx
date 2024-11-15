@@ -7,14 +7,13 @@ export default function Nav() {
     <>
       <Box className={styles.container}>
         <Box component="nav" className={styles.nav}>
-          <a
-            href="https://react.dev"
-            target="_blank"
-            className={styles.logoLink}
-          >
-            <img src={reactLogo} className="logo react" alt="React logo" />
+          <a href="/" className={styles.logoLink}>
+            <img src={reactLogo} className={styles.logo} alt="React logo" />
+
+            <Typography variant="h6" className={styles.logoText}>
+              Pokedex
+            </Typography>
           </a>
-          <Typography variant="h6">Pokedex</Typography>
         </Box>
       </Box>
     </>

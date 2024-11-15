@@ -100,6 +100,8 @@ export default tseslint.config({
 
 - kind of drowning in css files, something I forgot about with tailwind
 
+- kind of tired organizing the styles in css files. I'm sure there's a prettier-esque extension to fix this but it's a pain
+
 - REACT
 
 - no image component like next.js

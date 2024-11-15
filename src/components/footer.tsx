@@ -7,10 +7,13 @@ export default function Footer() {
   return (
     <Box className={styles.footerContainer}>
       <footer className={styles.footer}>
-        <a href="https://react.dev" target="_blank" className={styles.logoLink}>
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a href="/" className={styles.logoLink}>
+          <img src={reactLogo} className={styles.logo} alt="React logo" />
+
+          <Typography variant="h6" className={styles.logoText}>
+            Pokedex
+          </Typography>
         </a>
-        <Typography variant="h6">Pokedex</Typography>
       </footer>
     </Box>
   );

@@ -17,23 +17,39 @@ export default function PokemonCard({
   return (
     <>
       {/* <pre>{JSON.stringify(response, null, 2)}</pre> */}
-      <Card
-        className={styles.pokemonCard}
-        sx={{
-          backgroundColor: "var(--background-paper-color)",
-          color: "var(--primary-color)",
-        }}
-      >
-        <CardContent>
-          <Typography variant="h5" className={styles.name}>
-            {name}
-          </Typography>
-          <Box className={styles.typeContainer}>
-            <Typography>{typeA}</Typography>
-            <Typography>{typeB}</Typography>
-          </Box>
-        </CardContent>
-      </Card>
+      <a href="/pokemon">
+        <Card
+          className={styles.pokemonCard}
+          sx={{
+            backgroundColor: "var(--background-paper-color)",
+            color: "var(--primary-color)",
+          }}
+        >
+          <CardContent>
+            <Box className={styles.imageContainer}>
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+                alt={`${name} sprite`}
+              ></img>
+            </Box>
+            <Typography variant="h5" className={styles.name}>
+              {name}
+            </Typography>
+            <Box className={styles.typeContainer}>
+              {typeA ? (
+                <Typography className={styles.type}>{typeA}</Typography>
+              ) : (
+                <></>
+              )}
+              {typeB ? (
+                <Typography className={styles.type}>{typeB}</Typography>
+              ) : (
+                <></>
+              )}
+            </Box>
+          </CardContent>
+        </Card>
+      </a>
     </>
   );
 }
@@ -47,9 +63,9 @@ export function PokemonList({
     <>
       <Grid2
         container
-        rowSpacing={1}
+        gap={3}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ justifyContent: "center", alignItems: "center" }}
+        className={styles.pokemonListGrid}
       >
         {children}
       </Grid2>
