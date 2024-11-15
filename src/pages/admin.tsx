@@ -5,6 +5,7 @@ import {
   CardActions,
   CardContent,
   Grid2,
+  Typography,
 } from "@mui/material";
 
 import styles from "./admin.module.css";
@@ -39,7 +40,7 @@ export default function Admin() {
           <AdminCard
             title={"Delete Pokemon"}
             subtitle={"Delete all pokemon from database"}
-            action={"Fetch"}
+            action={"Delete"}
           />
         </Grid2>
       </Box>
@@ -65,11 +66,26 @@ function AdminCard({
       className={styles.adminCard}
     >
       <CardContent>
-        <Box>{title}</Box>
-        <Box sx={{ color: "var(--text-secondary-color)" }}>{subtitle}</Box>
+        <Typography variant="h5" sx={{ marginBottom: "0.5rem" }}>
+          {title}
+        </Typography>
+        <Typography sx={{ color: "var(--text-secondary-color)" }}>
+          {subtitle}
+        </Typography>
       </CardContent>
-      <CardActions>
-        <Button>{action}</Button>
+      <CardActions sx={{ padding: "16px" }}>
+        <Button
+          variant="contained"
+          sx={{
+            borderRadius: "9999px",
+            color: "var(--background-paper-color)",
+            backgroundColor: "var(--secondary-color)",
+            textTransform: "none",
+            minWidth: "82px",
+          }}
+        >
+          <Typography>{action}</Typography>
+        </Button>
       </CardActions>
     </Card>
   );
