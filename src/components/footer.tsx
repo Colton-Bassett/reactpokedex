@@ -1,4 +1,4 @@
-import reactLogo from "../assets/react.svg";
+import reactLogo from "../assets/react_logo_dark.svg";
 import { Box, Typography } from "@mui/material";
 
 import styles from "./footer.module.css";

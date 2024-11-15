@@ -20,7 +20,7 @@ export default function PokemonCard({
       <Card
         className={styles.pokemonCard}
         sx={{
-          backgroundColor: "var(--background-color)",
+          backgroundColor: "var(--background-paper-color)",
           color: "var(--primary-color)",
         }}
       >
