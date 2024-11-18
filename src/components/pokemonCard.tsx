@@ -2,6 +2,7 @@ import { Box, Card, CardContent, Grid2, Typography } from "@mui/material";
 import { separatePokemonTypes } from "../lib/utils";
 
 import styles from "./pokemonCard.module.css";
+import { Link } from "react-router-dom";
 
 export default function PokemonCard({
   id,
@@ -17,7 +18,7 @@ export default function PokemonCard({
   return (
     <>
       {/* <pre>{JSON.stringify(response, null, 2)}</pre> */}
-      <a href="/pokemon">
+      <Link to={`/pokemon/${id}`}>
         <Card
           className={styles.pokemonCard}
           sx={{
@@ -49,7 +50,7 @@ export default function PokemonCard({
             </Box>
           </CardContent>
         </Card>
-      </a>
+      </Link>
     </>
   );
 }

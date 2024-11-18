@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route
-            path="/pokemon"
+            path="/pokemon/:id"
             element={
               <Suspense fallback={<Loading />}>
                 <Pokemon />
