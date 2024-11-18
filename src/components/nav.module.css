@@ -14,21 +14,54 @@
 .nav {
   display: flex;
   height: 4rem;
+  justify-content: space-between;
   align-items: center;
 
   padding: 0 1.75rem;
   gap: 1rem;
 }
 
-.logoLink {
+.link {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.linkText {
+  padding: 0.6rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.linkText:hover {
+  background-color: rgba(246, 247, 249, 0.05);
+}
+
+.githubLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
+}
+
+.githubLink:hover {
+  border-radius: 9999px;
+  background-color: rgba(246, 247, 249, 0.05);
+}
+
 .logo {
   height: 38.4px;
   width: 42.675px;
+}
+
+.github {
 }
 
 .logoText {

@@ -23,6 +23,13 @@
   gap: 1rem;
 }
 
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
 .logoContainer {
   width: 100%;
 }
@@ -33,6 +40,16 @@
   align-items: center;
 }
 
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link:hover {
+  border-bottom: 1px solid white;
+}
+
 .logo {
   height: 38.4px;
   width: 42.675px;
@@ -40,4 +57,8 @@
 
 .logoText {
   margin-left: 1rem !important;
+}
+
+.linkText {
+  font-size: 1rem !important;
 }
