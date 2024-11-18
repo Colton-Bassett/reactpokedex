@@ -83,6 +83,20 @@ export default tseslint.config({
 - [ ] Optimistic updates
 - [ ] Analytics
 
+## Scripts
+
+```bash
+pnpm dev
+# launch development server with live reloading, updates, and debugging.
+
+pnpm build
+# bundle project and create deployable app
+
+firebase deploy
+# Deploy newest version of built project (which is located in /dist)
+# run this after 'pnpm build'
+```
+
 ## Review
 
 - MATERIAL UI
@@ -106,3 +120,19 @@ export default tseslint.config({
 
 - no image component like next.js
 - no native ssr
+
+- FIREBASE
+
+- just setup hosting with firebase. Looks like you need the paid version for new firebase 'app' hosting, which has automatic github deploys and SSR + full stack app deploys (nextjs). Seems like a more modern solution. I instead setup regular firebase hosting which was a little confusing. The documentation was just okay.
+
+- i don't really like that i have to add the npm install firebase to my project just for a simple deploy
+
+- i don't really like that firebase wanted access to my entire github account (instead of just a repository) in order to deploy
+
+- overall deploying was pretty painless and easy, but it seems if you're using firebase, it's probably for all the other features you get in addition to hosting (analytics, database, cloud, authentication, etc)
+
+- firebase hosting is mainly for single page or static apps
+
+- seems like firebase hosting automatically takes advantage of a CDN so I don't have to set that up. Very cool.
+
+- i wanted to use firebase cloud functions but i had to enter a credit card and i did not like that

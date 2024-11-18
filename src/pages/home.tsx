@@ -1,6 +1,6 @@
 import styles from "./home.module.css";
 import PokemonCard, { PokemonList } from "../components/pokemonCard";
-import { Box, Grid2 } from "@mui/material";
+import { Box } from "@mui/material";
 
 export default function Home() {
   const rows = [
@@ -34,6 +34,6 @@ export default function Home() {
   );
 }
 
-function Loading() {
-  return <h2>🌀 Loading...</h2>;
-}
+// function Loading() {
+//   return <h2>🌀 Loading...</h2>;
+// }

@@ -1,4 +1,3 @@
-import { use } from "react";
 import { Card } from "@mui/material";
 
 export default function Pokemon() {
