@@ -1,5 +1,8 @@
+import { Box, Typography } from "@mui/material";
 import PokemonCard from "../components/pokemonCard";
 import { useParams } from "react-router-dom";
+
+import styles from "./home.module.css";
 
 export default function Pokemon() {
   //   const response = use(
@@ -12,8 +15,10 @@ export default function Pokemon() {
   return (
     <>
       {/* <pre>{JSON.stringify(response, null, 2)}</pre> */}
-      <h1>Pokemon Page {pokemonId}</h1>
-      <PokemonCard id={pokemonId} name={pokemon.name} type={pokemon.type} />
+      <Box className={styles.pokemonPage}>
+        <Typography className={styles.title}>Pokemon Page</Typography>
+        <PokemonCard id={pokemonId} name={pokemon.name} type={pokemon.type} />
+      </Box>
     </>
   );
 }

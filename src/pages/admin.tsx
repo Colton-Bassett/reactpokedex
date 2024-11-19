@@ -20,7 +20,7 @@ export default function Admin() {
     <>
       {/* <pre>{JSON.stringify(response, null, 2)}</pre> */}
       <Box className={styles.adminContainer}>
-        <h1>Admin Page</h1>
+        <Typography className={styles.title}>Admin Page</Typography>
         <Grid2
           container
           gap={3}
@@ -66,7 +66,10 @@ function AdminCard({
       className={styles.adminCard}
     >
       <CardContent>
-        <Typography variant="h5" sx={{ marginBottom: "0.5rem" }}>
+        <Typography
+          variant="h5"
+          sx={{ marginBottom: "0.5rem", fontWeight: "600" }}
+        >
           {title}
         </Typography>
         <Typography sx={{ color: "var(--text-secondary-color)" }}>

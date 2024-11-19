@@ -8,6 +8,12 @@
   width: 100%;
 }
 
+.title {
+  font-size: 2.5rem !important;
+  font-weight: 600 !important;
+  margin: 1rem 0 2rem 0 !important;
+}
+
 .adminCardContainer {
   /* display: flex; */
   justify-content: center;
