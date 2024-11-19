@@ -18,14 +18,10 @@ export default function Footer() {
               </Typography>
             </Link>
             <Link to="/help" className={styles.link}>
-              <Typography variant="h6" className={styles.linkText}>
-                Help
-              </Typography>
+              <Typography className={styles.linkText}>Help</Typography>
             </Link>
             <Link to="/disclaimer" className={styles.link}>
-              <Typography variant="h6" className={styles.linkText}>
-                Disclaimer
-              </Typography>
+              <Typography className={styles.linkText}>Disclaimer</Typography>
             </Link>
           </Box>
         </div>

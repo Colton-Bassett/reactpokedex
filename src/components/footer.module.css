@@ -20,6 +20,7 @@
 .linkInnerContainer {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   height: 8rem;
   width: 100%;
   max-width: 56rem;
@@ -47,15 +48,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid transparent;
 }
 
 .link {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid transparent;
 }
 
-.link:hover {
+.link p:hover {
   border-bottom: 1px solid var(--primary-color);
 }
 
