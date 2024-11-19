@@ -1,3 +1,5 @@
+import { Suspense, use } from "react";
+
 import {
   Box,
   Button,
@@ -11,10 +13,38 @@ import {
 import styles from "./admin.module.css";
 
 export default function Admin() {
-  //   const response = use(
-  //     fetch(`https://pokeapi.co/api/v2/pokemon/1/`).then((res) => res.json()),
-  //   );
-  //   console.log(response);
+  interface Pokemon {
+    id: number;
+    name: string;
+    type: string;
+  }
+
+  function fetchPokemonFromAPI() {
+    // let pokemonList: Pokemon[] = [];
+
+    const pokemonData = use(
+      Promise.all(
+        Array.from({ length: 5 }, (_, i) =>
+          fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}/`)
+            .then((res) => res.json())
+            .then((data) => {
+              const pokemon: Pokemon = {
+                id: data.id,
+                name: data.name,
+                type:
+                  data.types.length > 1
+                    ? data.types[0].type.name + data.types[1].type.name
+                    : data.types[0].type.name,
+              };
+              console.log(pokemon);
+              return pokemon;
+            }),
+        ),
+      ),
+    );
+    console.log(pokemonData);
+    return pokemonData;
+  }
 
   return (
     <>
@@ -31,18 +61,66 @@ export default function Admin() {
             title={"Fetch Pokemon"}
             subtitle={"Fetch and log all pokemon in console (debugging)"}
             action={"Fetch"}
+            button={
+              <Button
+                onClick={() => fetchPokemonFromAPI()}
+                variant="contained"
+                sx={{
+                  borderRadius: "9999px",
+                  color: "var(--background-paper-color)",
+                  backgroundColor: "var(--secondary-color)",
+                  textTransform: "none",
+                  minWidth: "82px",
+                }}
+              >
+                <Typography>Fetch</Typography>
+              </Button>
+            }
           />
           <AdminCard
             title={"Save Pokemon"}
             subtitle={"Fetch and save all pokemon to database"}
             action={"Save"}
+            button={
+              <Button
+                onClick={() => alert("Fetch")}
+                variant="contained"
+                sx={{
+                  borderRadius: "9999px",
+                  color: "var(--background-paper-color)",
+                  backgroundColor: "var(--secondary-color)",
+                  textTransform: "none",
+                  minWidth: "82px",
+                }}
+              >
+                <Typography>Save</Typography>
+              </Button>
+            }
           />
           <AdminCard
             title={"Delete Pokemon"}
             subtitle={"Delete all pokemon from database"}
             action={"Delete"}
+            button={
+              <Button
+                onClick={() => alert("Fetch")}
+                variant="contained"
+                sx={{
+                  borderRadius: "9999px",
+                  color: "var(--background-paper-color)",
+                  backgroundColor: "var(--secondary-color)",
+                  textTransform: "none",
+                  minWidth: "82px",
+                }}
+              >
+                <Typography>Delete</Typography>
+              </Button>
+            }
           />
         </Grid2>
+        {/* <Suspense fallback={<div>Loading...</div>}>
+          <PokemonTest />
+        </Suspense> */}
       </Box>
     </>
   );
@@ -52,10 +130,12 @@ function AdminCard({
   title,
   subtitle,
   action,
+  button,
 }: {
   title: string;
   subtitle: string;
   action: string;
+  button: React.ReactNode;
 }) {
   return (
     <Card
@@ -76,20 +156,24 @@ function AdminCard({
           {subtitle}
         </Typography>
       </CardContent>
-      <CardActions sx={{ padding: "16px" }}>
-        <Button
-          variant="contained"
-          sx={{
-            borderRadius: "9999px",
-            color: "var(--background-paper-color)",
-            backgroundColor: "var(--secondary-color)",
-            textTransform: "none",
-            minWidth: "82px",
-          }}
-        >
-          <Typography>{action}</Typography>
-        </Button>
-      </CardActions>
+      <CardActions sx={{ padding: "16px" }}>{button}</CardActions>
     </Card>
   );
+}
+
+function PokemonTest() {
+  const pokemonPromises = Array.from({ length: 2 }, (_, i) =>
+    fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}/`).then((res) =>
+      res.json(),
+    ),
+  );
+
+  const pokemonDataRaw = use(Promise.all(pokemonPromises));
+  console.log(pokemonDataRaw);
+  //   const response = use(
+  //     fetch(`https://pokeapi.co/api/v2/pokemon/1/`).then((res) => res.json()),
+  //   );
+  //   console.log(response);
+
+  return <div>Done</div>;
 }

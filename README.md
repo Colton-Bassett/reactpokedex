@@ -140,3 +140,5 @@ firebase deploy
 - seems like firebase hosting automatically takes advantage of a CDN so I don't have to set that up. Very cool.
 
 - i wanted to use firebase cloud functions but i had to enter a credit card and i did not like that
+
+- data display of firebase is awesome. I really like looking at the console. UI is good
