@@ -22,6 +22,12 @@
 }
 
 .link {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoLink {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,4 +69,10 @@
 
 .logoText {
   margin-left: 1rem !important;
+}
+
+@media (min-width: 768px) {
+  .link {
+    display: flex;
+  }
 }

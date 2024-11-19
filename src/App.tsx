@@ -18,7 +18,7 @@ import Disclaimer from "./pages/disclaimer";
 function App() {
   return (
     <Box className={styles.container}>
-      {/* <Nav /> */}
+      <Nav />
       <Box component="main" className={styles.main}>
         <Routes>
           <Route path="/" element={<Home />}></Route>

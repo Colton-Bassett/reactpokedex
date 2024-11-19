@@ -2,6 +2,7 @@ import reactLogo from "../assets/react_logo_dark.svg";
 import { Box, Typography } from "@mui/material";
 
 import styles from "./footer.module.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -9,23 +10,23 @@ export default function Footer() {
       <footer className={styles.footer}>
         <div className={styles.linkInnerContainer}>
           <Box className={styles.linkContainer}>
-            <a href="/" className={styles.logoLink}>
+            <Link to="/" className={styles.logoLink}>
               <img src={reactLogo} className={styles.logo} alt="React logo" />
 
               <Typography variant="h6" className={styles.logoText}>
                 Pokedex
               </Typography>
-            </a>
-            <a href="/help" className={styles.link}>
+            </Link>
+            <Link to="/help" className={styles.link}>
               <Typography variant="h6" className={styles.linkText}>
                 Help
               </Typography>
-            </a>
-            <a href="/disclaimer" className={styles.link}>
+            </Link>
+            <Link to="/disclaimer" className={styles.link}>
               <Typography variant="h6" className={styles.linkText}>
                 Disclaimer
               </Typography>
-            </a>
+            </Link>
           </Box>
         </div>
       </footer>

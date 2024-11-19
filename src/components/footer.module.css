@@ -32,7 +32,7 @@
 .linkContainer {
   display: flex;
   justify-content: flex-start;
-  min-width: 470px;
+  min-width: 360px;
   overflow: auto;
   white-space: nowrap;
   gap: 40px;

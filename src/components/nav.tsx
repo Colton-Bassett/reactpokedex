@@ -3,25 +3,26 @@ import githubLogo from "../assets/github_logo_dark.svg";
 
 import { Box, Typography } from "@mui/material";
 import styles from "./nav.module.css";
+import { Link } from "react-router-dom";
 export default function Nav() {
   return (
     <>
       <Box className={styles.container}>
         <Box component="nav" className={styles.nav}>
-          <a href="/" className={styles.link}>
+          <Link to="/" className={styles.logoLink}>
             <img src={reactLogo} className={styles.logo} alt="React logo" />
 
             <Typography variant="h6" className={styles.logoText}>
               Pokedex
             </Typography>
-          </a>
+          </Link>
           <Box className={styles.linkContainer}>
-            <a href="help" className={styles.link}>
+            <Link to="/help" className={styles.link}>
               <Typography className={styles.linkText}>Help</Typography>
-            </a>
-            <a href="/disclaimer" className={styles.link}>
+            </Link>
+            <Link to="/disclaimer" className={styles.link}>
               <Typography className={styles.linkText}>Disclaimer</Typography>
-            </a>
+            </Link>
             <a
               href="https://github.com/colton-bassett/"
               target="_blank"

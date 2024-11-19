@@ -123,6 +123,7 @@ firebase deploy
 
 - no image component like next.js
 - no native ssr
+- with react router dom i have to create a useEffect to scroll to the top of a page after a navigate. AINTNOWAY this isn't just built in behavior. Crazy town
 
 - FIREBASE
 
