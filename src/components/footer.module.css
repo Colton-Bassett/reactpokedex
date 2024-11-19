@@ -11,23 +11,32 @@
 
 .footer {
   display: flex;
-  align-items: center;
+  overflow: auto;
+  white-space: nowrap;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
 
+.linkInnerContainer {
+  display: flex;
+  justify-content: flex-start;
   height: 8rem;
   width: 100%;
   max-width: 56rem;
-
   margin: auto;
-
-  padding: 0 1.75rem;
-  gap: 1rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+  overflow: auto;
 }
 
 .linkContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  justify-content: flex-start;
+  min-width: 470px;
+  overflow: auto;
+  white-space: nowrap;
+  gap: 40px;
+  padding: 0 15px;
 }
 
 .logoContainer {

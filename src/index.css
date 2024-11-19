@@ -48,9 +48,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
 
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 h1 {

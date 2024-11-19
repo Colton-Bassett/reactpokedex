@@ -117,6 +117,8 @@ firebase deploy
 
 - kind of tired organizing the styles in css files. I'm sure there's a prettier-esque extension to fix this but it's a pain
 
+- the only way I can use responsive breakpoints (sm, md, lg, xl, etc) is through the Grid component or media queries. Not a fan
+
 - REACT
 
 - no image component like next.js
