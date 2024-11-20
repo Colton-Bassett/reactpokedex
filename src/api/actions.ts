@@ -3,10 +3,12 @@ import {
   collection,
   getDocs,
   query,
+  where,
   writeBatch,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { capitalizeFirstLetter } from "../lib/utils";
+import { use } from "react";
 
 interface Pokemon {
   id: number;
@@ -34,7 +36,7 @@ export async function storePokemonInDB(pokemonList: Pokemon[]) {
 export async function fetchPokemonFromAPI() {
   const pokemonList = [];
 
-  for (let id = 1; id <= 15; id++) {
+  for (let id = 1; id <= 151; id++) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
     const data = await response.json();
 
@@ -74,46 +76,52 @@ export async function deleteAllPokemonFromDB() {
   }
 }
 
-export async function fetchTwelveRandomPokemonFromDB() {
+// use, faster?
+export function fetchTwelveRandomPokemonFromDB() {
+  const randomIds = getRandomNumbers(12, 1, 151);
   const pokemonCollection = collection(db, "pokemon");
-  const collectionSnapshot = await getDocs(pokemonCollection);
-  const pokemons: Pokemon[] = collectionSnapshot.docs.map((doc) => {
-    const data = doc.data() as Pokemon;
-    return data;
-  });
 
-  console.log("pokemon from DB: ", pokemons);
+  // Create a single query with an IN clause to fetch all Pokemon in one go
+  const pokemonQuery = query(pokemonCollection, where("id", "in", randomIds));
 
-  const shuffledPokemons = pokemons.sort(() => Math.random() - 0.5);
-  const randomPokemons = shuffledPokemons.slice(0, 12);
+  const collectionSnapshot = use(getDocs(pokemonQuery));
 
-  console.log("randomized pokemon: ", randomPokemons);
-  return randomPokemons;
+  let pokemons: Pokemon[] = [];
+  for (let i = 0; i < 12; i++) {
+    pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
+  }
+
+  console.log("random pokemon from DB: ", pokemons);
+  return pokemons;
 }
 
-//   function fetchPokemonFromAPIWithState() {
-//     // this is for updating state async in client
+function getRandomNumbers(count: number, min: number, max: number): number[] {
+  const numbers: Set<number> = new Set();
 
-//     const pokemonData = use(
-//       Promise.all(
-//         Array.from({ length: 5 }, (_, i) =>
-//           fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}/`)
-//             .then((res) => res.json())
-//             .then((data) => {
-//               const pokemon: Pokemon = {
-//                 id: data.id,
-//                 name: data.name,
-//                 type:
-//                   data.types.length > 1
-//                     ? data.types[0].type.name + data.types[1].type.name
-//                     : data.types[0].type.name,
-//               };
-//               console.log(pokemon);
-//               return pokemon;
-//             }),
-//         ),
-//       ),
-//     );
-//     console.log(pokemonData);
-//     return pokemonData;
-//   }
+  // Keep generating random numbers until we have the required count
+  while (numbers.size < count) {
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    numbers.add(randomNumber);
+  }
+
+  return Array.from(numbers);
+}
+
+// async, faster?
+export async function fetchTwelveRandomPokemonFromDBAsync() {
+  const randomIds = getRandomNumbers(12, 1, 151);
+  const pokemonCollection = collection(db, "pokemon");
+
+  // Create a single query with an IN clause to fetch all Pokemon in one go
+  const pokemonQuery = query(pokemonCollection, where("id", "in", randomIds));
+
+  const collectionSnapshot = await getDocs(pokemonQuery);
+
+  let pokemons: Pokemon[] = [];
+  for (let i = 0; i < 12; i++) {
+    pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
+  }
+
+  console.log("random pokemon from DB: ", pokemons);
+  return pokemons;
+}

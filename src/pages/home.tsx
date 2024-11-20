@@ -2,8 +2,23 @@ import { Box, Button } from "@mui/material";
 import PokemonCard, { PokemonList } from "../components/pokemonCard";
 
 import styles from "./home.module.css";
+import {
+  fetchTwelveRandomPokemonFromDB,
+  fetchTwelveRandomPokemonFromDBAsync,
+} from "../api/actions";
+
+interface Pokemon {
+  id: number;
+  name: string;
+  type: string;
+}
 
 export default function Home() {
+  //   const rows: Pokemon[] = fetchTwelveRandomPokemonFromDB();
+
+  //   const pokemonList = fetchTwelveRandomPokemonFromDB();
+
+  //   console.log(pokemonList);
   const rows = [
     { id: 75, name: "Graveler", type: "GroundRock" },
     { id: 149, name: "Dragonite", type: "DragonFlying" },
@@ -22,9 +37,6 @@ export default function Home() {
   return (
     <>
       <Box className={styles.home}>
-        {/* <Suspense fallback={<Loading />}>
-        <Page />
-      </Suspense> */}
         <PokemonList>
           {rows.map((p) => (
             <PokemonCard key={p.id} id={p.id} name={p.name} type={p.type} />
@@ -37,6 +49,7 @@ export default function Home() {
           disableElevation={true}
           disableTouchRipple={true}
           className={styles.loadMoreButton}
+          onClick={() => fetchTwelveRandomPokemonFromDBAsync()}
         >
           Load more
         </Button>

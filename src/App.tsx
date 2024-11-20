@@ -20,7 +20,14 @@ function App() {
       <Nav />
       <Box component="main" className={styles.main}>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<Loading />}>
+                <Home />
+              </Suspense>
+            }
+          ></Route>
           <Route
             path="/pokemon/:id"
             element={
