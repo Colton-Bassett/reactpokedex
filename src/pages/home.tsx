@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import PokemonCard, { PokemonList } from "../components/pokemonCard";
 
 import styles from "./home.module.css";
@@ -30,6 +30,16 @@ export default function Home() {
             <PokemonCard key={p.id} id={p.id} name={p.name} type={p.type} />
           ))}
         </PokemonList>
+        <Button
+          variant="contained"
+          disableFocusRipple={true}
+          disableRipple={true}
+          disableElevation={true}
+          disableTouchRipple={true}
+          className={styles.loadMoreButton}
+        >
+          Load more
+        </Button>
       </Box>
     </>
   );

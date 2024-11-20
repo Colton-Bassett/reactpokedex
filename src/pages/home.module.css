@@ -14,12 +14,21 @@
   justify-content: center;
   width: 100%;
   max-width: 56rem;
-  padding-top: 3rem;
 }
 
 .homeGrid {
   justify-content: center;
   align-items: center;
+}
+
+.loadMoreButton {
+  padding: 0.6rem 1.5rem !important;
+  margin-top: 2rem !important;
+  border-radius: 9999px !important;
+  color: var(--text-color) !important;
+  background-color: var(--secondary-color) !important;
+  font-size: 1rem !important;
+  text-transform: none !important;
 }
 
 /* DISCLAIMER AND HELP */

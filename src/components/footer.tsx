@@ -18,7 +18,7 @@ export default function Footer() {
             >
               <img src={reactLogo} className={styles.logo} alt="React logo" />
 
-              <Typography variant="h6" className={styles.logoText}>
+              <Typography variant="h5" className={styles.logoText}>
                 Pokedex
               </Typography>
             </Link>

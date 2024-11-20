@@ -64,14 +64,14 @@ export default tseslint.config({
 - [x] Project scaffolding (materialui, emotion, prettier, etc)
 - [x] Host project on Firebase Hosting
 - [x] Build out basic UI
-- [ ] Implement PokeAPI calls
-- [ ] Display data
-- [ ] Setup firestore db
-- [ ] Refine UI
+- [x] Implement PokeAPI calls
+- [x] Display data
+- [x] Setup firestore db
+- [x] Refine UI
 - [ ] Error handling
 - [ ] Implement basic authorization
-- [ ] Finish material-ifying the UI
-- [ ] Replace favicon with React
+- [x] Finish material-ifying and react-ifying the UI
+- [x] Replace favicon with React
 - [ ] Update README (summary, review, tidying)
 
 ## Extras
