@@ -1,13 +1,4 @@
 import {
-  addDoc,
-  collection,
-  getDocs,
-  query,
-  writeBatch,
-} from "firebase/firestore";
-import { db } from "../firebase-config";
-
-import {
   Box,
   Button,
   Card,
@@ -17,52 +8,19 @@ import {
   Typography,
 } from "@mui/material";
 
+import {
+  deleteAllPokemonFromDB,
+  fetchPokemonFromAPI,
+  fetchTwelveRandomPokemonFromDB,
+  storePokemonInDB,
+} from "../api/actions";
+
 import styles from "./admin.module.css";
 
-interface Pokemon {
-  id: number;
-  name: string;
-  type: string;
-}
-
 export default function Admin() {
-  const pokemonList = [
-    { id: 1, name: "Bulbasaur", type: "Grass/Poison" },
-    { id: 2, name: "Ivysaur", type: "Grass/Poison" },
-    { id: 3, name: "Venusaur", type: "Grass/Poison" },
-    { id: 4, name: "Charmander", type: "Fire" },
-    { id: 5, name: "Charmeleon", type: "Fire" },
-  ];
-
-  //   function fetchPokemonFromAPIWithState() {
-  //     // this is for updating state async in client
-
-  //     const pokemonData = use(
-  //       Promise.all(
-  //         Array.from({ length: 5 }, (_, i) =>
-  //           fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}/`)
-  //             .then((res) => res.json())
-  //             .then((data) => {
-  //               const pokemon: Pokemon = {
-  //                 id: data.id,
-  //                 name: data.name,
-  //                 type:
-  //                   data.types.length > 1
-  //                     ? data.types[0].type.name + data.types[1].type.name
-  //                     : data.types[0].type.name,
-  //               };
-  //               console.log(pokemon);
-  //               return pokemon;
-  //             }),
-  //         ),
-  //       ),
-  //     );
-  //     console.log(pokemonData);
-  //     return pokemonData;
-  //   }
-
-  function saveToDB() {
-    storePokemonList(pokemonList)
+  async function saveToDB() {
+    const pokemonList = await fetchPokemonFromAPI();
+    storePokemonInDB(pokemonList)
       .then(() => {
         console.log("All Pokémon have been stored!");
       })
@@ -73,7 +31,6 @@ export default function Admin() {
 
   return (
     <>
-      {/* <pre>{JSON.stringify(response, null, 2)}</pre> */}
       <Box className={styles.adminContainer}>
         <Typography className={styles.title}>Admin Page</Typography>
         <Grid2
@@ -88,7 +45,7 @@ export default function Admin() {
             action={"Fetch"}
             button={
               <Button
-                onClick={() => fetchPokemonFromAPI()}
+                onClick={() => fetchTwelveRandomPokemonFromDB()}
                 variant="contained"
                 sx={{
                   borderRadius: "9999px",
@@ -128,7 +85,7 @@ export default function Admin() {
             action={"Delete"}
             button={
               <Button
-                onClick={() => deleteAllPokemon()}
+                onClick={() => deleteAllPokemonFromDB()}
                 variant="contained"
                 sx={{
                   borderRadius: "9999px",
@@ -180,65 +137,4 @@ function AdminCard({
       <CardActions sx={{ padding: "16px" }}>{button}</CardActions>
     </Card>
   );
-}
-
-const storePokemonList = async (pokemonList: Pokemon[]) => {
-  // Reference to the Firestore collection where the Pokémon data will be stored
-  const pokemonCollection = collection(db, "pokemon"); // 'pokemons' is the collection name
-
-  try {
-    // Iterate over each Pokémon in the list and store it in Firestore
-    for (const pokemon of pokemonList) {
-      await addDoc(pokemonCollection, {
-        id: pokemon.id,
-        name: pokemon.name,
-        type: pokemon.type,
-      });
-      console.log(`Stored Pokémon with ID: ${pokemon.id}`);
-    }
-  } catch (error) {
-    console.error("Error storing Pokémon data:", error);
-  }
-};
-
-const fetchPokemonFromAPI = async () => {
-  const pokemonList = [];
-
-  for (let id = 1; id <= 5; id++) {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-    const data = await response.json();
-
-    const pokemon: Pokemon = {
-      id: data.id,
-      name: data.name,
-      type:
-        data.types.length > 1
-          ? data.types[0].type.name + data.types[1].type.name
-          : data.types[0].type.name,
-    };
-
-    pokemonList.push(pokemon);
-    console.log(pokemon);
-  }
-
-  console.log("All Pokémon fetched:", pokemonList);
-};
-
-async function deleteAllPokemon() {
-  const collectionRef = collection(db, "pokemon");
-  const q = query(collectionRef);
-
-  try {
-    const querySnapshot = await getDocs(q);
-    const batch = writeBatch(db);
-
-    querySnapshot.forEach((doc) => {
-      batch.delete(doc.ref);
-    });
-    await batch.commit();
-
-    console.log("Collection: pokemon deleted successfully");
-  } catch (error) {
-    console.error("Error deleting collection: pokemon", error);
-  }
 }
