@@ -1,13 +1,19 @@
-import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import { scrollToTop } from "../lib/utils";
+
 import styles from "./home.module.css";
 
 export default function Help() {
   return (
     <>
       <Box className={styles.disclaimer}>
-        <Link to={`/`} className={styles.homeLink}>
-          <span className={styles.homeLinkInner}>HOME &#8201;</span>
+        <Link
+          to={`/`}
+          className={styles.homeLink}
+          onClick={() => scrollToTop()}
+        >
+          <Typography className={styles.homeLinkInner}>HOME &#8201;</Typography>
           {
             <svg
               width="20"

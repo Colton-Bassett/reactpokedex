@@ -1,6 +1,7 @@
-import styles from "./home.module.css";
-import PokemonCard, { PokemonList } from "../components/pokemonCard";
 import { Box } from "@mui/material";
+import PokemonCard, { PokemonList } from "../components/pokemonCard";
+
+import styles from "./home.module.css";
 
 export default function Home() {
   const rows = [
@@ -33,7 +34,3 @@ export default function Home() {
     </>
   );
 }
-
-// function Loading() {
-//   return <h2>🌀 Loading...</h2>;
-// }

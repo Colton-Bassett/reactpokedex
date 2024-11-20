@@ -1,15 +1,15 @@
+import { Link } from "react-router-dom";
 import reactLogo from "../assets/react_logo_dark.svg";
+import { scrollToTop } from "../lib/utils";
 import { Box, Typography } from "@mui/material";
 
 import styles from "./footer.module.css";
-import { Link } from "react-router-dom";
-import { scrollToTop } from "../lib/utils";
 
 export default function Footer() {
   return (
     <Box className={styles.footerContainer}>
       <footer className={styles.footer}>
-        <div className={styles.linkInnerContainer}>
+        <Box className={styles.footerInner}>
           <Box className={styles.linkContainer}>
             <Link
               to="/"
@@ -37,7 +37,7 @@ export default function Footer() {
               <Typography className={styles.linkText}>Disclaimer</Typography>
             </Link>
           </Box>
-        </div>
+        </Box>
       </footer>
     </Box>
   );

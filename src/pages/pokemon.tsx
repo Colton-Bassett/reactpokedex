@@ -1,10 +1,9 @@
 import { use } from "react";
-import { Box, Typography } from "@mui/material";
-import PokemonCard from "../components/pokemonCard";
 import { useParams } from "react-router-dom";
-
 import { db } from "../firebase-config.ts";
 import { collection, getDocs } from "firebase/firestore";
+import { Box, Typography } from "@mui/material";
+import PokemonCard from "../components/pokemonCard";
 
 import styles from "./home.module.css";
 
