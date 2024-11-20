@@ -1,4 +1,11 @@
-import { Suspense, use } from "react";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  writeBatch,
+} from "firebase/firestore";
+import { db } from "../firebase-config";
 
 import {
   Box,
@@ -11,8 +18,6 @@ import {
 } from "@mui/material";
 
 import styles from "./admin.module.css";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase-config";
 
 interface Pokemon {
   id: number;
@@ -123,7 +128,7 @@ export default function Admin() {
             action={"Delete"}
             button={
               <Button
-                onClick={() => alert("Delete")}
+                onClick={() => deleteAllPokemon()}
                 variant="contained"
                 sx={{
                   borderRadius: "9999px",
@@ -138,9 +143,6 @@ export default function Admin() {
             }
           />
         </Grid2>
-        {/* <Suspense fallback={<div>Loading...</div>}>
-          <PokemonTest />
-        </Suspense> */}
       </Box>
     </>
   );
@@ -216,8 +218,27 @@ const fetchPokemonFromAPI = async () => {
     };
 
     pokemonList.push(pokemon);
-    console.log(pokemon); // Log the data for each Pokémon
+    console.log(pokemon);
   }
 
-  console.log("All Pokémon fetched:", pokemonList); // Log the complete list
+  console.log("All Pokémon fetched:", pokemonList);
 };
+
+async function deleteAllPokemon() {
+  const collectionRef = collection(db, "pokemon");
+  const q = query(collectionRef);
+
+  try {
+    const querySnapshot = await getDocs(q);
+    const batch = writeBatch(db);
+
+    querySnapshot.forEach((doc) => {
+      batch.delete(doc.ref);
+    });
+    await batch.commit();
+
+    console.log("Collection: pokemon deleted successfully");
+  } catch (error) {
+    console.error("Error deleting collection: pokemon", error);
+  }
+}

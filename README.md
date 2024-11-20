@@ -142,3 +142,5 @@ firebase deploy
 - i wanted to use firebase cloud functions but i had to enter a credit card and i did not like that
 
 - data display of firebase is awesome. I really like looking at the console. UI is good
+
+- i can't do a drop table on firebase firestore collection. I have to fetch all documents and then delete each one in batches
