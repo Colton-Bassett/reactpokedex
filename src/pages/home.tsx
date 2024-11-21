@@ -2,10 +2,8 @@ import { Box, Button } from "@mui/material";
 import PokemonCard, { PokemonList } from "../components/pokemonCard";
 
 import styles from "./home.module.css";
-import {
-  fetchTwelveRandomPokemonFromDB,
-  fetchTwelveRandomPokemonFromDBAsync,
-} from "../api/actions";
+import { fetchTwelveRandomPokemonFromDB } from "../api/actions";
+import { useNavigate } from "react-router-dom";
 
 interface Pokemon {
   id: number;
@@ -15,10 +13,8 @@ interface Pokemon {
 
 export default function Home() {
   //   const rows: Pokemon[] = fetchTwelveRandomPokemonFromDB();
+  const navigate = useNavigate();
 
-  //   const pokemonList = fetchTwelveRandomPokemonFromDB();
-
-  //   console.log(pokemonList);
   const rows = [
     { id: 75, name: "Graveler", type: "GroundRock" },
     { id: 149, name: "Dragonite", type: "DragonFlying" },
@@ -44,12 +40,8 @@ export default function Home() {
         </PokemonList>
         <Button
           variant="contained"
-          disableFocusRipple={true}
-          disableRipple={true}
-          disableElevation={true}
-          disableTouchRipple={true}
           className={styles.loadMoreButton}
-          onClick={() => fetchTwelveRandomPokemonFromDBAsync()}
+          onClick={() => navigate("/")}
         >
           Load more
         </Button>

@@ -1,13 +1,4 @@
 .home {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  min-width: 100vw;
-  padding: 2rem;
-  padding-bottom: 5rem; */
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,10 +16,15 @@
   padding: 0.6rem 1.5rem !important;
   margin-top: 2rem !important;
   border-radius: 9999px !important;
-  color: var(--text-color) !important;
+  color: var(--background-paper-color) !important;
   background-color: var(--secondary-color) !important;
   font-size: 1rem !important;
   text-transform: none !important;
+  font-weight: 600 !important;
+}
+
+.loadMoreButton:focus {
+  outline: none !important;
 }
 
 /* DISCLAIMER AND HELP */

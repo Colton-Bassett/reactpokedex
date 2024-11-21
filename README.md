@@ -68,6 +68,8 @@ export default tseslint.config({
 - [x] Display data
 - [x] Setup firestore db
 - [x] Refine UI
+- [ ] Refine api actions (fetchRandomPokemon)
+- [ ] Fix deployed image fetch from pokemon API
 - [ ] Error handling
 - [ ] Implement basic authorization
 - [x] Finish material-ifying and react-ifying the UI
@@ -101,29 +103,26 @@ firebase deploy
 ## Review
 
 - MATERIAL UI
-- using Material UI's 'sx' prop -- which is the system's solution to customizing css -- is pretty terrible. Looks exactly the same as vanilla html inline css style={{}} syntax. A strict downgrade to typescript
 
-- i really am not a fan of the styled components solution either. It has benefits for sure, but I just don't like how there's huge blocks of styling i have to scroll past to get to the real code. There's also the issue of performance with both the above approaches.
+- The solutions to customize MUI components (sx, theme, styled components aka css in jsx) feel really bad. I ended up using external css modules and just wished I had tailwind.
 
-- maybe they have great use-cases in enterprise level solutions where projects get exponentially big, but for smaller projects like these it feels like a lot of boiler plate and a lot of wasted time
+- MUI's design is old. The framework is still on material 2. They're currently working on updating to material 3, but material 3 came out 3 years ago.
 
-- probably sticking with external css files and css modules. More performant + separation of converns. Probably just wishing I had tailwind tbh
+- There is a component called <grid2> because <grid> isn't good anymore... but it still exists ???
 
-- MUI is still stuck on material 2, they're working on material 3. But material 3 came out literally 2 or 3 years ago.
-
-- aint now way they called this thing <grid2>
-
-- kind of drowning in css files, something I forgot about with tailwind
-
-- kind of tired organizing the styles in css files. I'm sure there's a prettier-esque extension to fix this but it's a pain
-
-- the only way I can use responsive breakpoints (sm, md, lg, xl, etc) is through the Grid component or media queries. Not a fan
+- The only way to use responsive breakpoints (sm, md, lg, xl, etc) on MUI components is through the Grid component, media queries, or adding another MUI library to my project.
 
 - REACT
 
-- no image component like next.js
-- no native ssr
-- with react router dom i have to create a useEffect to scroll to the top of a page after a navigate. AINTNOWAY this isn't just built in behavior. Crazy town
+- No image component like next.js
+
+- No native ssr
+
+- With react router dom i have to create a useEffect to scroll to the top of a page after a navigate. AINTNOWAY this isn't just built in behavior. Crazy town
+
+- CSR feels really fast and nice for smaller apps
+
+- Never refreshing with CSR between page navigations is cool
 
 - FIREBASE
 
@@ -144,3 +143,15 @@ firebase deploy
 - data display of firebase is awesome. I really like looking at the console. UI is good
 
 - i can't do a drop table on firebase firestore collection. I have to fetch all documents and then delete each one in batches
+
+CSS MODULES
+
+- Having to make a new css file for every component was a chore. I even had some components share stylesheets cause I got kinda tired of it.
+
+- Formatting css stylesheets to be consistent with others in the project was annoying. I spent a nontrivial time just organizing syntax.
+
+- Taking styles completely out of the tsx made components look cleaner and easier to read at a glance.
+
+- Dedicated style files meant more fine control for certain things that are a pain in Tailwind.
+
+- I got really tired of swapping between css files and tsx files and hunting down style sheets, etc. There are just many many style sheets...
