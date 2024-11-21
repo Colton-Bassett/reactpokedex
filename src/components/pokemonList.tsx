@@ -1,6 +1,6 @@
 import { Grid2 } from "@mui/material";
 import { Pokemon } from "../types";
-import { fetchTwelveRandomPokemonFromDB } from "../api/actions";
+import { fetchTwelvePokemonFromDB } from "../api/actions";
 import PokemonCard from "../components/pokemonCard";
 
 import styles from "./pokemonCard.module.css";

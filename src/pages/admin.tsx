@@ -11,7 +11,7 @@ import {
 import {
   deleteAllPokemonFromDB,
   fetchPokemonFromAPI,
-  fetchTwelveRandomPokemonFromDB,
+  fetchTwelvePokemonFromDB,
   storePokemonInDB,
 } from "../api/actions";
 
@@ -45,7 +45,7 @@ export default function Admin() {
             action={"Fetch"}
             button={
               <Button
-                onClick={() => fetchTwelveRandomPokemonFromDB()}
+                onClick={() => fetchTwelvePokemonFromDB()}
                 variant="contained"
                 sx={{
                   borderRadius: "9999px",

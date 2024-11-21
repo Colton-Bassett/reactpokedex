@@ -8,8 +8,8 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
+import { capitalizeFirstLetter, getRandomNumbers } from "../lib/utils";
 import { Pokemon } from "../types";
-import { capitalizeFirstLetter } from "../lib/utils";
 
 export async function storePokemonInDB(pokemonList: Pokemon[]) {
   const pokemonCollection = collection(db, "pokemon");
@@ -71,12 +71,31 @@ export async function deleteAllPokemonFromDB() {
   }
 }
 
-// use, faster?
-export function fetchTwelveRandomPokemonFromDB() {
+// async: for everything else
+export async function fetchTwelvePokemonFromDBAsync() {
   const randomIds = getRandomNumbers(12, 1, 151);
   const pokemonCollection = collection(db, "pokemon");
 
-  // Create a single query with an IN clause to fetch all Pokemon in one go
+  // create a single query with an 'in' clause to fetch all Pokemon in one go
+  const pokemonQuery = query(pokemonCollection, where("id", "in", randomIds));
+
+  const collectionSnapshot = await getDocs(pokemonQuery);
+
+  let pokemons: Pokemon[] = [];
+  for (let i = 0; i < 12; i++) {
+    pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
+  }
+
+  console.log("random pokemon from DB: ", pokemons);
+  return pokemons;
+}
+
+// use: for client load
+export function fetchTwelvePokemonFromDB() {
+  const randomIds = getRandomNumbers(12, 1, 151);
+  const pokemonCollection = collection(db, "pokemon");
+
+  // create a single query with an 'in' clause to fetch all Pokemon in one go
   const pokemonQuery = query(pokemonCollection, where("id", "in", randomIds));
 
   const collectionSnapshot = use(getDocs(pokemonQuery));
@@ -90,33 +109,13 @@ export function fetchTwelveRandomPokemonFromDB() {
   return pokemons;
 }
 
-function getRandomNumbers(count: number, min: number, max: number): number[] {
-  const numbers: Set<number> = new Set();
-
-  // Keep generating random numbers until we have the required count
-  while (numbers.size < count) {
-    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    numbers.add(randomNumber);
-  }
-
-  return Array.from(numbers);
-}
-
-// async, faster?
-export async function fetchTwelveRandomPokemonFromDBAsync() {
-  const randomIds = getRandomNumbers(12, 1, 151);
+// use: fetch one pokemon, for pokemon page
+export function fetchPokemonFromDB(id: number): Pokemon {
   const pokemonCollection = collection(db, "pokemon");
+  const pokemonQuery = query(pokemonCollection, where("id", "==", id));
+  const collectionSnapshot = use(getDocs(pokemonQuery));
 
-  // Create a single query with an IN clause to fetch all Pokemon in one go
-  const pokemonQuery = query(pokemonCollection, where("id", "in", randomIds));
-
-  const collectionSnapshot = await getDocs(pokemonQuery);
-
-  let pokemons: Pokemon[] = [];
-  for (let i = 0; i < 12; i++) {
-    pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
-  }
-
-  console.log("random pokemon from DB: ", pokemons);
-  return pokemons;
+  const pokemon = collectionSnapshot.docs[0].data() as Pokemon;
+  console.log(pokemon);
+  return pokemon;
 }
