@@ -70,6 +70,7 @@ export default tseslint.config({
 - [x] Refine UI
 - [ ] Refine api actions (fetchRandomPokemon)
 - [ ] Error handling
+- [ ] Fix loading components
 - [ ] Implement basic authorization
 - [x] Finish material-ifying and react-ifying the UI
 - [x] Replace favicon with React

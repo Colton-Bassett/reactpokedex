@@ -90,6 +90,17 @@ export async function fetchTwelvePokemonFromDBAsync() {
   return pokemons;
 }
 
+// use: fetch one pokemon, for pokemon page
+export async function fetchPokemonFromDBAsync(id: number) {
+  const pokemonCollection = collection(db, "pokemon");
+  const pokemonQuery = query(pokemonCollection, where("id", "==", id));
+  const collectionSnapshot = await getDocs(pokemonQuery);
+
+  const pokemon = collectionSnapshot.docs[0].data() as Pokemon;
+  console.log(pokemon);
+  return pokemon;
+}
+
 // use: for client load
 export function fetchTwelvePokemonFromDB() {
   const randomIds = getRandomNumbers(12, 1, 151);

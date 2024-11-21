@@ -4,6 +4,7 @@ import { fetchTwelvePokemonFromDB } from "../api/actions";
 import PokemonCard from "../components/pokemonCard";
 
 import styles from "./pokemonCard.module.css";
+import { use } from "react";
 
 export function PokemonList() {
   //   const rows: Pokemon[] = fetchTwelveRandomPokemonFromDB();
