@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid2, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import { separatePokemonTypes } from "../lib/utils";
 
 import styles from "./pokemonCard.module.css";
@@ -51,25 +51,6 @@ export default function PokemonCard({
           </CardContent>
         </Card>
       </Link>
-    </>
-  );
-}
-
-export function PokemonList({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <>
-      <Grid2
-        container
-        gap={3}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        className={styles.pokemonListGrid}
-      >
-        {children}
-      </Grid2>
     </>
   );
 }

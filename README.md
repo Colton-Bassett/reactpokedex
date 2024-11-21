@@ -69,7 +69,6 @@ export default tseslint.config({
 - [x] Setup firestore db
 - [x] Refine UI
 - [ ] Refine api actions (fetchRandomPokemon)
-- [ ] Fix deployed image fetch from pokemon API
 - [ ] Error handling
 - [ ] Implement basic authorization
 - [x] Finish material-ifying and react-ifying the UI
@@ -143,6 +142,8 @@ firebase deploy
 - data display of firebase is awesome. I really like looking at the console. UI is good
 
 - i can't do a drop table on firebase firestore collection. I have to fetch all documents and then delete each one in batches
+
+- dashboard for firestore seems to only update once a day or something, Hard to accurately track how many reads and writes I actually have. Went from 97 reads --> 6.6k the next day
 
 CSS MODULES
 

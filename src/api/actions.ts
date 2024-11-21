@@ -1,3 +1,4 @@
+import { use } from "react";
 import {
   addDoc,
   collection,
@@ -7,14 +8,8 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
+import { Pokemon } from "../types";
 import { capitalizeFirstLetter } from "../lib/utils";
-import { use } from "react";
-
-interface Pokemon {
-  id: number;
-  name: string;
-  type: string;
-}
 
 export async function storePokemonInDB(pokemonList: Pokemon[]) {
   const pokemonCollection = collection(db, "pokemon");
