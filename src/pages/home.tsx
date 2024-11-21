@@ -5,7 +5,8 @@ import { PokemonList } from "../components/pokemonList";
 import { fetchTwelvePokemonFromDBAsync } from "../api/actions";
 
 import styles from "./home.module.css";
-import ErrorBoundary from "../components/errorboundary";
+import ErrorBoundary, { ErrorComponent } from "../components/errorboundary";
+import Loading from "../components/loading";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -13,11 +14,19 @@ export default function Home() {
   return (
     <>
       <Box className={styles.home}>
-        <ErrorBoundary fallback={<div>Error</div>}>
+        <ErrorBoundary
+          fallback={
+            <ErrorComponent
+              type="Pokemon List"
+              description="Error loading Pokemon List"
+            />
+          }
+        >
           <Suspense fallback={<Loading />}>
             <PokemonList pokemonListPromise={fetchTwelvePokemonFromDBAsync()} />
           </Suspense>
         </ErrorBoundary>
+
         <Button
           variant="contained"
           className={styles.loadMoreButton}
@@ -28,8 +37,4 @@ export default function Home() {
       </Box>
     </>
   );
-}
-
-function Loading() {
-  return <h2>🌀 Loading...</h2>;
 }
