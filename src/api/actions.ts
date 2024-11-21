@@ -87,6 +87,7 @@ export async function fetchTwelvePokemonFromDBAsync() {
   }
 
   console.log("random pokemon from DB: ", pokemons);
+  //   const pokemons: Pokemon[] = use(Promise.reject("testing error"));
   return pokemons;
 }
 
@@ -97,6 +98,7 @@ export async function fetchPokemonFromDBAsync(id: number) {
   const collectionSnapshot = await getDocs(pokemonQuery);
 
   const pokemon = collectionSnapshot.docs[0].data() as Pokemon;
+  //   const pokemon: Pokemon = use(Promise.reject("testing error"));
   console.log(pokemon);
   return pokemon;
 }

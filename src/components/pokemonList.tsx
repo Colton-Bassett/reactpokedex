@@ -1,13 +1,16 @@
 import { Grid2 } from "@mui/material";
 import { Pokemon } from "../types";
-import { fetchTwelvePokemonFromDB } from "../api/actions";
 import PokemonCard from "../components/pokemonCard";
 
 import styles from "./pokemonCard.module.css";
 import { use } from "react";
 
-export function PokemonList() {
-  //   const rows: Pokemon[] = fetchTwelveRandomPokemonFromDB();
+export function PokemonList({
+  pokemonListPromise,
+}: {
+  pokemonListPromise: Promise<Pokemon[]>;
+}) {
+  //   const rows: Pokemon[] = use(pokemonListPromise);
   const rows: Pokemon[] = [
     { id: 75, name: "Graveler", type: "GroundRock" },
     { id: 149, name: "Dragonite", type: "DragonFlying" },

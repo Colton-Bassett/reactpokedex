@@ -1,12 +1,12 @@
+import { Suspense, use } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
-import { fetchPokemonFromDB, fetchPokemonFromDBAsync } from "../api/actions.ts";
+import { fetchPokemonFromDBAsync } from "../api/actions.ts";
 import PokemonCard from "../components/pokemonCard";
-
-import styles from "./home.module.css";
-import { Suspense, use, useCallback } from "react";
 import ErrorBoundary from "../components/errorboundary.tsx";
 import { Pokemon as PokemonType } from "../types.ts";
+
+import styles from "./home.module.css";
 
 export default function Pokemon() {
   const pokemonId = Number(useParams<{ id: string }>().id) || NaN;
@@ -20,7 +20,7 @@ export default function Pokemon() {
             <RenderPokemon
               pokemonPromise={fetchPokemonFromDBAsync(pokemonId)}
             />
-            {/* <RenderPokemon pokemonId={pokemonId} /> */}
+            {/* <RenderPokemonUSE pokemonId={pokemonId} /> */}
           </Suspense>
         </ErrorBoundary>
       </Box>
@@ -41,7 +41,7 @@ function RenderPokemon({
   );
 }
 
-// function RenderPokemon({ pokemonId }: { pokemonId: number }) {
+// function RenderPokemonUSE({ pokemonId }: { pokemonId: number }) {
 //   const pokemon = fetchPokemonFromDB(pokemonId);
 //   //   const pokemon: PokemonType = use(Promise.reject("testing error"));
 
