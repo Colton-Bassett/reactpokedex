@@ -28,14 +28,14 @@ export async function storePokemonInDB(pokemonList: Pokemon[]) {
     // return testReject;
   } catch (error) {
     console.error(error);
-    throw new Error("storePokemonInDB() error. Possible Firebase issue.");
+    throw new Error("storePokemonInDB(). Possible Firebase issue.");
   }
 }
 
 export async function fetchPokemonFromAPI() {
   const pokemonList: Pokemon[] = [];
   try {
-    for (let id = 1; id <= 10; id++) {
+    for (let id = 1; id <= 151; id++) {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
       const data = await response.json();
 
@@ -56,7 +56,7 @@ export async function fetchPokemonFromAPI() {
     return pokemonList;
   } catch (error) {
     console.log(error);
-    throw new Error("fetchPokemonFromAPI() error. Possible PokeAPI issue.");
+    throw new Error("fetchPokemonFromAPI(). Possible PokeAPI issue.");
   }
 }
 
@@ -72,10 +72,13 @@ export async function deleteAllPokemonFromDB() {
       batch.delete(doc.ref);
     });
     await batch.commit();
-
-    console.error("Collection: pokemon deleted successfully");
+    // const testReject = await Promise.reject(
+    //   new Error("Forced error for testing"),
+    // );
+    // return testReject;
   } catch (error) {
-    console.error("Error deleting collection: pokemon", error);
+    console.error(error);
+    throw new Error("deleteAllPokemonFromDB(). Possible Firebase issue.");
   }
 }
 

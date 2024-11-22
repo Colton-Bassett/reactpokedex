@@ -20,8 +20,11 @@ import { useTransition } from "react";
 import { Pokemon } from "../types";
 
 export default function Admin() {
-  const [isPending, startTransition] = useTransition();
+  const [isFetchPending, startFetchTransition] = useTransition();
+  const [isStorePending, startStoreTransition] = useTransition();
+  const [isDeletePending, startDeleteTransition] = useTransition();
 
+  // API handlers
   async function handleStorePokemonInDB() {
     // try catch this
     const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
@@ -36,7 +39,17 @@ export default function Admin() {
   async function handleFetchPokemon() {
     try {
       const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
+      console.log(pokemonList);
       alert(pokemonList.length + " Pokemon fetched successfully");
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async function handleDeleteAllPokemonFromDB() {
+    try {
+      await deleteAllPokemonFromDB();
+      alert("All Pokemon deleted successfully");
     } catch (error) {
       alert(error);
     }
@@ -59,12 +72,12 @@ export default function Admin() {
             button={
               <Button
                 onClick={() => {
-                  startTransition(async () => {
+                  startFetchTransition(async () => {
                     await handleFetchPokemon();
                   });
                 }}
                 variant="contained"
-                disabled={isPending}
+                disabled={isFetchPending}
                 sx={{
                   borderRadius: "9999px",
                   color: "var(--background-paper-color)",
@@ -72,8 +85,11 @@ export default function Admin() {
                   textTransform: "none",
                   minWidth: "82px",
                 }}
+                className={styles.adminCardButton}
               >
-                <Typography>{isPending ? "Fetching..." : "Fetch"}</Typography>
+                <Typography>
+                  {isFetchPending ? "Fetching..." : "Fetch"}
+                </Typography>
               </Button>
             }
           />
@@ -84,11 +100,12 @@ export default function Admin() {
             button={
               <Button
                 onClick={() => {
-                  startTransition(async () => {
+                  startStoreTransition(async () => {
                     await handleStorePokemonInDB();
                   });
                 }}
                 variant="contained"
+                disabled={isStorePending}
                 sx={{
                   borderRadius: "9999px",
                   color: "var(--background-paper-color)",
@@ -96,8 +113,9 @@ export default function Admin() {
                   textTransform: "none",
                   minWidth: "82px",
                 }}
+                className={styles.adminCardButton}
               >
-                <Typography>{isPending ? "Saving..." : "Save"}</Typography>
+                <Typography>{isStorePending ? "Saving..." : "Save"}</Typography>
               </Button>
             }
           />
@@ -107,8 +125,13 @@ export default function Admin() {
             action={"Delete"}
             button={
               <Button
-                onClick={() => deleteAllPokemonFromDB()}
+                onClick={() => {
+                  startDeleteTransition(async () => {
+                    await handleDeleteAllPokemonFromDB();
+                  });
+                }}
                 variant="contained"
+                disabled={isDeletePending}
                 sx={{
                   borderRadius: "9999px",
                   color: "var(--background-paper-color)",
@@ -116,8 +139,11 @@ export default function Admin() {
                   textTransform: "none",
                   minWidth: "82px",
                 }}
+                className={styles.adminCardButton}
               >
-                <Typography>Delete</Typography>
+                <Typography>
+                  {isDeletePending ? "Deleting..." : "Delete"}
+                </Typography>
               </Button>
             }
           />

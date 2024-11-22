@@ -28,3 +28,7 @@
   height: 350px;
   border-radius: 1rem !important;
 }
+
+.adminCardButton:focus {
+  outline: none !important;
+}
