@@ -11,13 +11,17 @@ import {
 import {
   deleteAllPokemonFromDB,
   fetchPokemonFromAPI,
-  fetchTwelvePokemonFromDB,
+  fetchTwelvePokemonFromDBAsync,
   storePokemonInDB,
 } from "../api/actions";
 
 import styles from "./admin.module.css";
+import { useTransition } from "react";
+import { Pokemon } from "../types";
 
 export default function Admin() {
+  const [isPending, startTransition] = useTransition();
+
   async function saveToDB() {
     const pokemonList = await fetchPokemonFromAPI();
     storePokemonInDB(pokemonList)
@@ -27,6 +31,27 @@ export default function Admin() {
       .catch((error) => {
         console.error("Error storing Pokémon list:", error);
       });
+  }
+
+  async function handleStorePokemonInDB() {
+    // try catch this
+    const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
+
+    try {
+      storePokemonInDB(pokemonList);
+      alert("Pokemon stored successfully");
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async function handleFetchPokemon() {
+    try {
+      const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
+      alert(pokemonList.length + " Pokemon fetched successfully");
+    } catch (error) {
+      alert(error);
+    }
   }
 
   return (
@@ -45,8 +70,19 @@ export default function Admin() {
             action={"Fetch"}
             button={
               <Button
-                onClick={() => fetchTwelvePokemonFromDB()}
+                onClick={() => {
+                  startTransition(async () => {
+                    // await fetchPokemonFromAPI()
+                    //   .then((list) => console.log(list))
+                    //   .catch((error: Error) => {
+                    //     console.error("Failed to fetch Pokemon:", error);
+                    //     alert(error);
+                    //   });
+                    await handleFetchPokemon();
+                  });
+                }}
                 variant="contained"
+                disabled={isPending}
                 sx={{
                   borderRadius: "9999px",
                   color: "var(--background-paper-color)",
@@ -55,7 +91,7 @@ export default function Admin() {
                   minWidth: "82px",
                 }}
               >
-                <Typography>Fetch</Typography>
+                <Typography>{isPending ? "Fetching..." : "Fetch"}</Typography>
               </Button>
             }
           />

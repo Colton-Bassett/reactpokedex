@@ -103,7 +103,6 @@ firebase deploy
 ## Review
 
 - MATERIAL UI
-
 - The solutions to customize MUI components (sx, theme, styled components aka css in jsx) feel really bad. I ended up using external css modules and just wished I had tailwind.
 
 - MUI's design is old. The framework is still on material 2. They're currently working on updating to material 3, but material 3 came out 3 years ago.
@@ -113,7 +112,6 @@ firebase deploy
 - The only way to use responsive breakpoints (sm, md, lg, xl, etc) on MUI components is through the Grid component, media queries, or adding another MUI library to my project.
 
 - REACT
-
 - No image component like next.js
 
 - No native ssr
@@ -125,26 +123,29 @@ firebase deploy
 - Never refreshing with CSR between page navigations is cool
 
 - FIREBASE
+- You need the paid version for new firebase 'app' hosting (easily confused with firebase hosting) which provides automatic github deploys and SSR + full stack app capability (nextjs)
 
-- just setup hosting with firebase. Looks like you need the paid version for new firebase 'app' hosting, which has automatic github deploys and SSR + full stack app deploys (nextjs). Seems like a more modern solution. I instead setup regular firebase hosting which was a little confusing. The documentation was just okay.
+- Documentation for a brand new project was just okay. Startup was a little confusing for a complete newcomer to firebase.
 
-- i don't really like that i have to add the npm install firebase to my project just for a simple deploy
+- When adding Firebase to an app, it adds a lot of files and overhead; just in case you want to use one of their 10+ features.
 
-- i don't really like that firebase wanted access to my entire github account (instead of just a repository) in order to deploy
+- To setup github auto deploys, Firebase wanted access to ALL of my github projects instead of just my singular firebase project.
 
-- overall deploying was pretty painless and easy, but it seems if you're using firebase, it's probably for all the other features you get in addition to hosting (analytics, database, cloud, authentication, etc)
+- Deployment was easy but my project ended up with a lot of extra files, so as a deployment solution only, it's kind of bad.
 
-- firebase hosting is mainly for single page or static apps
+- If you're using firebase, it's ideally for all the features you get in addition to hosting (analytics, database, cloud, authentication, etc).
 
-- seems like firebase hosting automatically takes advantage of a CDN so I don't have to set that up. Very cool.
+- Firebase hosting is for single page or static apps only.
 
-- i wanted to use firebase cloud functions but i had to enter a credit card and i did not like that
+- Firebase hosting automatically takes advantage of a CDN, no extra setup. Very cool.
 
-- data display of firebase is awesome. I really like looking at the console. UI is good
+- Firebase cloud functions require the paid version and I did not like that.
 
-- i can't do a drop table on firebase firestore collection. I have to fetch all documents and then delete each one in batches
+- UI of Firebase is awesome. Console looks really clean. Data communication great.
 
-- dashboard for firestore seems to only update once a day or something, Hard to accurately track how many reads and writes I actually have. Went from 97 reads --> 6.6k the next day
+- Can't just drop a table on Firestore collection. I have to fetch all documents and then delete in batches.
+
+- Dashboard for Firestore seems to only update once a day. It's hard to accurately track how many reads and writes I actually have. Went from 97 reads --> 6.6k the next day.
 
 CSS MODULES
 
