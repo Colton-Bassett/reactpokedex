@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { fetchPokemonFromDBAsync } from "../api/actions.ts";
 import PokemonCard from "../components/pokemonCard";
-import ErrorBoundary from "../components/errorboundary.tsx";
+import ErrorBoundary, { ErrorComponent } from "../components/errorboundary.tsx";
+import Loading from "../components/loading.tsx";
 import { Pokemon as PokemonType } from "../types.ts";
 
 import styles from "./home.module.css";
@@ -15,7 +16,14 @@ export default function Pokemon() {
     <>
       <Box className={styles.pokemonPage}>
         <Typography className={styles.title}>Pokemon Page</Typography>
-        <ErrorBoundary fallback={<div>Error</div>}>
+        <ErrorBoundary
+          fallback={
+            <ErrorComponent
+              type="Pokemon"
+              description="Error loading Pokemon"
+            />
+          }
+        >
           <Suspense fallback={<Loading />}>
             <RenderPokemon
               pokemonPromise={fetchPokemonFromDBAsync(pokemonId)}
@@ -48,7 +56,3 @@ function RenderPokemon({
 //   return <PokemonCard id={pokemonId} name={pokemon.name} type={pokemon.type} />;
 //   // return <div>Hello</div>;
 // }
-
-function Loading() {
-  return <h2>🌀 Loading...</h2>;
-}

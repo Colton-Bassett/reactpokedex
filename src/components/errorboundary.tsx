@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 
 import styles from "../pages/home.module.css";
+import { Box, Typography } from "@mui/material";
 
 interface ErrorBoundaryProps {
   fallback: ReactNode;
@@ -40,9 +41,9 @@ export function ErrorComponent({
   description: string;
 }) {
   return (
-    <div className={styles.errorContainer}>
-      <div className={styles.errorTitle}>Error: {type}</div>
-      <div className={styles.errorDescription}>{description}</div>
-    </div>
+    <Box className={styles.errorContainer}>
+      <Typography className={styles.errorTitle}>Error: {type}</Typography>
+      <Typography className={styles.errorDescription}>{description}</Typography>
+    </Box>
   );
 }

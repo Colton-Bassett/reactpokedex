@@ -7,10 +7,15 @@ import { fetchTwelvePokemonFromDBAsync } from "../api/actions";
 import styles from "./home.module.css";
 import ErrorBoundary, { ErrorComponent } from "../components/errorboundary";
 import Loading from "../components/loading";
+import { scrollToTop } from "../lib/utils";
 
 export default function Home() {
   const navigate = useNavigate();
 
+  function handleRefreshPage() {
+    navigate(0);
+    scrollToTop();
+  }
   return (
     <>
       <Box className={styles.home}>
@@ -30,7 +35,7 @@ export default function Home() {
         <Button
           variant="contained"
           className={styles.loadMoreButton}
-          onClick={() => navigate("/")}
+          onClick={() => handleRefreshPage()}
         >
           Load more
         </Button>

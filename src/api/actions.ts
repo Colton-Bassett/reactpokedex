@@ -81,13 +81,13 @@ export async function fetchTwelvePokemonFromDBAsync() {
 
   const collectionSnapshot = await getDocs(pokemonQuery);
 
-  //   let pokemons: Pokemon[] = [];
-  //   for (let i = 0; i < 12; i++) {
-  //     pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
-  //   }
+  let pokemons: Pokemon[] = [];
+  for (let i = 0; i < 12; i++) {
+    pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
+  }
 
-  //   console.log("random pokemon from DB: ", pokemons);
-  const pokemons: Pokemon[] = use(Promise.reject("testing error"));
+  console.log("random pokemon from DB: ", pokemons);
+  //   const pokemons: Pokemon[] = use(Promise.reject("testing error"));
   return pokemons;
 }
 
@@ -98,8 +98,9 @@ export async function fetchPokemonFromDBAsync(id: number) {
   const collectionSnapshot = await getDocs(pokemonQuery);
 
   const pokemon = collectionSnapshot.docs[0].data() as Pokemon;
-  //   const pokemon: Pokemon = use(Promise.reject("testing error"));
   console.log(pokemon);
+  //   const pokemon: Pokemon = use(Promise.reject("testing error"));
+
   return pokemon;
 }
 
