@@ -11,23 +11,24 @@ import { capitalizeFirstLetter, getRandomNumbers } from "../lib/utils";
 import { Pokemon } from "../types";
 
 export async function storePokemonInDB(pokemonList: Pokemon[]) {
-  //   const pokemonCollection = collection(db, "pokemon");
+  const pokemonCollection = collection(db, "pokemon");
 
   try {
-    // for (const pokemon of pokemonList) {
-    //   await addDoc(pokemonCollection, {
-    //     id: pokemon.id,
-    //     name: pokemon.name,
-    //     type: pokemon.type,
-    //   });
-    //   console.log(`Stored Pokémon with ID: ${pokemon.id}`);
-    // }
-    const testReject = await Promise.reject(
-      new Error("Forced error for testing"),
-    );
+    for (const pokemon of pokemonList) {
+      await addDoc(pokemonCollection, {
+        id: pokemon.id,
+        name: pokemon.name,
+        type: pokemon.type,
+      });
+      console.log(`Stored Pokémon with ID: ${pokemon.id}`);
+    }
+    // const testReject = await Promise.reject(
+    //   new Error("Forced error for testing"),
+    // );
+    // return testReject;
   } catch (error) {
     console.error(error);
-    throw new Error("fetchPokemonFromAPI() error. Possible PokeAPI issue.");
+    throw new Error("storePokemonInDB() error. Possible Firebase issue.");
   }
 }
 

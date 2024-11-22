@@ -22,23 +22,11 @@ import { Pokemon } from "../types";
 export default function Admin() {
   const [isPending, startTransition] = useTransition();
 
-  async function saveToDB() {
-    const pokemonList = await fetchPokemonFromAPI();
-    storePokemonInDB(pokemonList)
-      .then(() => {
-        console.log("All Pokémon have been stored!");
-      })
-      .catch((error) => {
-        console.error("Error storing Pokémon list:", error);
-      });
-  }
-
   async function handleStorePokemonInDB() {
     // try catch this
     const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
-
     try {
-      storePokemonInDB(pokemonList);
+      await storePokemonInDB(pokemonList);
       alert("Pokemon stored successfully");
     } catch (error) {
       alert(error);
@@ -72,12 +60,6 @@ export default function Admin() {
               <Button
                 onClick={() => {
                   startTransition(async () => {
-                    // await fetchPokemonFromAPI()
-                    //   .then((list) => console.log(list))
-                    //   .catch((error: Error) => {
-                    //     console.error("Failed to fetch Pokemon:", error);
-                    //     alert(error);
-                    //   });
                     await handleFetchPokemon();
                   });
                 }}
@@ -101,7 +83,11 @@ export default function Admin() {
             action={"Save"}
             button={
               <Button
-                onClick={() => saveToDB()}
+                onClick={() => {
+                  startTransition(async () => {
+                    await handleStorePokemonInDB();
+                  });
+                }}
                 variant="contained"
                 sx={{
                   borderRadius: "9999px",
@@ -111,7 +97,7 @@ export default function Admin() {
                   minWidth: "82px",
                 }}
               >
-                <Typography>Save</Typography>
+                <Typography>{isPending ? "Saving..." : "Save"}</Typography>
               </Button>
             }
           />
