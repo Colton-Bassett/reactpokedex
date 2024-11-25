@@ -14,7 +14,7 @@ export default function Home() {
 
   function handleRefreshPage() {
     navigate(0);
-    scrollToTop();
+    // scrollToTop();
   }
   return (
     <>

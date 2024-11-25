@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  background-color: var(--background-color);
+  background-color: rgb(35 39 47/0.99);
   color: var(--primary-color);
   box-shadow:
     0 0 0 0 #0000,

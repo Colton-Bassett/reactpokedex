@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  /* width: calc(100vw - 4rem); */
   max-width: 56rem;
   width: 100%;
 }
@@ -11,11 +10,15 @@
 .title {
   font-size: 2.5rem !important;
   font-weight: 600 !important;
+  margin: 1rem 0 0 0 !important;
+}
+
+.subtitle {
+  font-size: 1.25rem !important;
   margin: 1rem 0 2rem 0 !important;
 }
 
 .adminCardContainer {
-  /* display: flex; */
   justify-content: center;
   align-items: center;
 }

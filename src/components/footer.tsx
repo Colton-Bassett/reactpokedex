@@ -37,7 +37,7 @@ export default function Footer() {
               <Typography className={styles.linkText}>Disclaimer</Typography>
             </Link>
             <Link
-              to="/disclaimer"
+              to="/admin"
               className={styles.link}
               onClick={() => scrollToTop()}
             >

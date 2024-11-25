@@ -25,17 +25,6 @@ export default function Admin() {
   const [isDeletePending, startDeleteTransition] = useTransition();
 
   // API handlers
-  async function handleStorePokemonInDB() {
-    // try catch this
-    const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
-    try {
-      await storePokemonInDB(pokemonList);
-      alert("Pokemon stored successfully");
-    } catch (error) {
-      alert(error);
-    }
-  }
-
   async function handleFetchPokemon() {
     try {
       const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
@@ -44,6 +33,17 @@ export default function Admin() {
         pokemonList.length +
           " Pokemon fetched successfully. Check console logs for details.",
       );
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async function handleStorePokemonInDB() {
+    // try catch this
+    const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
+    try {
+      await storePokemonInDB(pokemonList);
+      alert("Pokemon stored successfully");
     } catch (error) {
       alert(error);
     }
@@ -62,6 +62,9 @@ export default function Admin() {
     <>
       <Box className={styles.adminContainer}>
         <Typography className={styles.title}>Admin Page</Typography>
+        <Typography className={styles.subtitle}>
+          Admin permissions are required to perform the actions below.
+        </Typography>
         <Grid2
           container
           gap={3}
