@@ -28,7 +28,6 @@ export default function Pokemon() {
             <RenderPokemon
               pokemonPromise={fetchPokemonFromDBAsync(pokemonId)}
             />
-            {/* <RenderPokemonUSE pokemonId={pokemonId} /> */}
           </Suspense>
         </ErrorBoundary>
       </Box>
@@ -54,5 +53,5 @@ function RenderPokemon({
 //   //   const pokemon: PokemonType = use(Promise.reject("testing error"));
 
 //   return <PokemonCard id={pokemonId} name={pokemon.name} type={pokemon.type} />;
-//   // return <div>Hello</div>;
+//   // return <Box>Hello</Box>;
 // }

@@ -11,7 +11,6 @@ import {
 import {
   deleteAllPokemonFromDB,
   fetchPokemonFromAPI,
-  fetchTwelvePokemonFromDBAsync,
   storePokemonInDB,
 } from "../api/actions";
 

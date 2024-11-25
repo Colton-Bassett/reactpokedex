@@ -79,8 +79,17 @@
 
 .paragraph {
   margin: 1rem 0 !important;
+  line-height: 30px !important;
+  font-size: 1.1rem !important;
 }
 
+.code {
+  background-color: rgb(153 161 179/0.1);
+  line-height: 30px;
+  font-size: 1rem;
+  padding: 1px 0.25rem;
+  border-radius: 0.375rem;
+}
 /* POKEMON PAGE */
 .pokemonPage {
   display: flex;

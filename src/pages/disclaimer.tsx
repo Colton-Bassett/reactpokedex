@@ -47,9 +47,9 @@ export default function Disclaimer() {
         </Typography>
         <Typography className={styles.paragraph}>
           This site is an independent web app and is not associated with,
-          endorsed by, or connected to React, Firebasee, or any of their
-          affiliates. All related trademarks and copyrights are owned by their
-          respective entities. All rights reserved.
+          endorsed by, or connected to React, Firebase, MaterialUI, or any of
+          their affiliates. All related trademarks and copyrights are owned by
+          their respective entities. All rights reserved.
         </Typography>
       </Box>
     </>

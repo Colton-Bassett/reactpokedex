@@ -33,22 +33,24 @@ export default function Help() {
         <Typography className={styles.subtitle}>November 18, 2024</Typography>
         <hr className={styles.linebreak}></hr>
         <Typography className={styles.paragraph}>
-          The goal of this website is to quickly fetch and display 12 random
-          Pokémon from a pool of 151 Generation One Pokémon stored in a
-          PostgreSQL database. Users can refresh the list by clicking the Fetch
-          button on the Home Page. Additionally, clicking on any Pokémon will
-          navigate to a detail page with a unique URL for each Pokémon.
+          This website displays 12 randomly selected Gen 1 Pokémon from a list
+          of 151. Data is fetched from PokéAPI and stored in a Firebase
+          Firestore. Users can refresh the list by clicking the{" "}
+          <code className={styles.code}>load more</code> button on the Home
+          Page. Clicking a Pokémon leads to a basic detail page with a unique
+          URL.
         </Typography>
         <Typography className={styles.paragraph}>
-          Built with modern React architecture, the initial Pokémon data is
-          fetched server-side and statically served to the client for fast load
-          times. Subsequent requests are dynamically served, ensuring fast
-          database queries and a seamless user experience.
+          Built with React 19, this is a CSR single-page app. Pokémon are
+          fetched on page load from the Firestore with React's newer{" "}
+          <code className={styles.code}>use API</code>;{" "}
+          <code className={styles.code}>useEffect</code> or 3rd party libraries
+          like <code className={styles.code}>react query</code> are not used.
         </Typography>
         <Typography className={styles.paragraph}>
-          An admin page is also available, which requires basic authentication.
-          This page allows for managing Pokémon data, including adding, saving,
-          and deleting entries via raw SQL queries.
+          An admin page is also available, which requires sufficient
+          permissions. This page allows for managing Pokémon data, including
+          adding, saving, and deleting entries via Firestore queries.
         </Typography>
       </Box>
     </>
