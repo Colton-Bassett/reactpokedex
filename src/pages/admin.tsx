@@ -40,7 +40,10 @@ export default function Admin() {
     try {
       const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
       console.log(pokemonList);
-      alert(pokemonList.length + " Pokemon fetched successfully");
+      alert(
+        pokemonList.length +
+          " Pokemon fetched successfully. Check console logs for details.",
+      );
     } catch (error) {
       alert(error);
     }

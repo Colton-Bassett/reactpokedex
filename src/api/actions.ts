@@ -28,14 +28,16 @@ export async function storePokemonInDB(pokemonList: Pokemon[]) {
     // return testReject;
   } catch (error) {
     console.error(error);
-    throw new Error("storePokemonInDB(). Possible Firebase issue.");
+    throw new Error(
+      "storing Pokemon in database. Possible Firebase issue or insufficient permissions.",
+    );
   }
 }
 
 export async function fetchPokemonFromAPI() {
   const pokemonList: Pokemon[] = [];
   try {
-    for (let id = 1; id <= 151; id++) {
+    for (let id = 1; id <= 5; id++) {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
       const data = await response.json();
 
@@ -56,7 +58,7 @@ export async function fetchPokemonFromAPI() {
     return pokemonList;
   } catch (error) {
     console.log(error);
-    throw new Error("fetchPokemonFromAPI(). Possible PokeAPI issue.");
+    throw new Error("fetching Pokemon from API. Possible PokeAPI issue.");
   }
 }
 
@@ -78,7 +80,9 @@ export async function deleteAllPokemonFromDB() {
     // return testReject;
   } catch (error) {
     console.error(error);
-    throw new Error("deleteAllPokemonFromDB(). Possible Firebase issue.");
+    throw new Error(
+      "deleting all Pokemon from database. Possible Firebase issue or insufficient permissions.",
+    );
   }
 }
 
@@ -90,29 +94,43 @@ export async function fetchTwelvePokemonFromDBAsync() {
   // create a single query with an 'in' clause to fetch all Pokemon in one go
   const pokemonQuery = query(pokemonCollection, where("id", "in", randomIds));
 
-  const collectionSnapshot = await getDocs(pokemonQuery);
+  try {
+    const collectionSnapshot = await getDocs(pokemonQuery);
 
-  let pokemons: Pokemon[] = [];
-  for (let i = 0; i < 12; i++) {
-    pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
+    let pokemons: Pokemon[] = [];
+    for (let i = 0; i < 12; i++) {
+      pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
+    }
+    console.log("random pokemon from DB: ", pokemons);
+
+    // const pokemons: Pokemon[] = await Promise.reject("testing error");
+    return pokemons;
+  } catch (error) {
+    console.error(error);
+    throw new Error(
+      "fetching twelve random Pokemon from database. Possible Firestore issue or insufficient permissions.",
+    );
   }
-  console.log("random pokemon from DB: ", pokemons);
-
-  //   const pokemons: Pokemon[] = use(Promise.reject("testing error"));
-  return pokemons;
 }
 
 // use: fetch one pokemon, for pokemon page
 export async function fetchPokemonFromDBAsync(id: number) {
   const pokemonCollection = collection(db, "pokemon");
   const pokemonQuery = query(pokemonCollection, where("id", "==", id));
-  const collectionSnapshot = await getDocs(pokemonQuery);
+  try {
+    const collectionSnapshot = await getDocs(pokemonQuery);
 
-  const pokemon = collectionSnapshot.docs[0].data() as Pokemon;
-  console.log(pokemon);
+    const pokemon = collectionSnapshot.docs[0].data() as Pokemon;
+    console.log(pokemon);
 
-  //   const pokemon: Pokemon = use(Promise.reject("testing error"));
-  return pokemon;
+    // const pokemon: Pokemon = await Promise.reject("testing error");
+    return pokemon;
+  } catch (error) {
+    console.error(error);
+    throw new Error(
+      "fetching Pokemon from database. Possible Firestore issue or insufficient permissions.",
+    );
+  }
 }
 
 // use: for client load

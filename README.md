@@ -68,16 +68,17 @@ export default tseslint.config({
 - [x] Display data
 - [x] Setup firestore db
 - [x] Refine UI
-- [ ] Refine other actions + error handling (fetchRandomPokemon)
+- [x] Refine other actions + error handling (fetchRandomPokemon)
 - [x] API Error handling
 - [x] Fix loading components
-- [ ] Implement basic authorization
 - [x] Finish material-ifying and react-ifying the UI
 - [x] Replace favicon with React
+- [ ] Final UI refinement pass
 - [ ] Update README (summary, review, tidying)
 
 ## Extras
 
+- [ ] Implement basic authorization
 - [ ] Add extra Pokémon data
 - [ ] Add Fonts
 - [ ] Dark and Light mode
