@@ -16,6 +16,7 @@
 .subtitle {
   font-size: 1.25rem !important;
   margin: 1rem 0 2rem 0 !important;
+  text-align: center !important;
 }
 
 .adminCardContainer {

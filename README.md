@@ -73,9 +73,9 @@ export default tseslint.config({
 - [x] Fix loading components
 - [x] Finish material-ifying and react-ifying the UI
 - [x] Replace favicon with React
-- [ ] Final UI refinement pass
-- [ ] Remove console.log statements
-- [ ] Refine Help/Disclaimer text
+- [x] Final UI refinement pass
+- [x] Remove console.log statements
+- [x] Refine Help/Disclaimer text
 - [ ] Update README (summary, review, tidying)
 
 ## Extras

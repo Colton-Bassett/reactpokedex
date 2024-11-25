@@ -20,7 +20,6 @@ export async function storePokemonInDB(pokemonList: Pokemon[]) {
         name: pokemon.name,
         type: pokemon.type,
       });
-      console.log(`Stored Pokémon with ID: ${pokemon.id}`);
     }
     // const testReject = await Promise.reject(
     //   new Error("Forced error for testing"),
@@ -57,7 +56,7 @@ export async function fetchPokemonFromAPI() {
     // );
     return pokemonList;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new Error("fetching Pokemon from API. Possible PokeAPI issue.");
   }
 }
@@ -101,7 +100,6 @@ export async function fetchTwelvePokemonFromDBAsync() {
     for (let i = 0; i < 12; i++) {
       pokemons.push(collectionSnapshot.docs[i].data() as Pokemon);
     }
-    console.log("random pokemon from DB: ", pokemons);
 
     // const pokemons: Pokemon[] = await Promise.reject("testing error");
     return pokemons;
@@ -121,7 +119,6 @@ export async function fetchPokemonFromDBAsync(id: number) {
     const collectionSnapshot = await getDocs(pokemonQuery);
 
     const pokemon = collectionSnapshot.docs[0].data() as Pokemon;
-    console.log(pokemon);
 
     // const pokemon: Pokemon = await Promise.reject("testing error");
     return pokemon;

@@ -27,7 +27,6 @@ export default function Admin() {
   async function handleFetchPokemon() {
     try {
       const pokemonList: Pokemon[] = await fetchPokemonFromAPI();
-      console.log(pokemonList);
       alert(
         pokemonList.length +
           " Pokemon fetched successfully. Check console logs for details.",
