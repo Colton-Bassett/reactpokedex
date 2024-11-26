@@ -1,34 +1,39 @@
 ## React Pokedex
 
-React + Vite, Material UI, CSS Modules, Firebase Hosting, Firestore
+[ReactPokedex](https://reactpokedex-3f2b4.web.app/) is the second part of a three-phase project to build a Pokedex app using three distinct React tech stacks. In this version, users can explore 12 randomly selected Pokémon and visit dynamic URLs to view detailed information about each one.
+
+Authorized users gain access to an admin panel, where they can interact with the app's database - fetching Pokémon data from the [PokeAPI](https://pokeapi.co/), and saving, updating, or deleting Pokémon records stored in a Firebase Firestore database.
+
+ReactPokedex is built with [React](https://react.dev/) + [Vite](https://vite.dev/) as the React framework and build tool, [Firebase](https://firebase.google.com/) for hosting, and Firebase [Firestore](https://firebase.google.com/docs/firestore) for cloud-based data storage. The app also leverages [Material UI](https://mui.com/) for Material-inspired UI components and [CSS Modules](https://github.com/css-modules/css-modules) for styling.
 
 ## Goals
 
 1. Build a simple, full-stack application with vanilla React + Vite
 2. **Showcase new React 19 hooks and APIs by fetching from a database without useEffect or 3rd party libraries and methods**
 3. Gain a deeper understanding of React's CSR vs. Next.js's SSR and dynamic loading
-4. Explore a Material UI methodology (again)
-5. Conduct an informal developer experience review using: vanilla React + Vite, Firebase, Firestore, Material UI, CSS Modules
+4. Get an introduction to Firestore and Firebase
+5. Explore a React design methodology using MUI
+6. Conduct an informal developer experience review using: vanilla React + Vite, Firebase, Firestore, Material UI, CSS Modules
 
 ## Todo
 
 - [x] Project scaffolding (materialui, firebase, prettier, etc)
-- [x] Host project on Firebase Hosting
+- [x] Host project with Firebase Hosting
 - [x] Build out basic UI
 - [x] Implement PokeAPI calls
 - [x] Display data
-- [x] Setup firestore db
+- [x] Setup Firestore DB
 - [x] Refine UI
 - [x] Refine 'client' actions
-- [x] Add 'client' actions error-handling
+- [x] Add 'client' action error-handling
 - [x] Final UI refinement pass
-- [ ] Update README (summary, review, tidying)
+- [x] Update README (summary, review, tidying)
 
 ## Extras
 
-- [ ] Implement basic authorization
-- [ ] Add extra Pokémon data
-- [ ] Add Fonts
+- [ ] Firebase authorization
+- [ ] Extra Pokémon data
+- [ ] Extra Fonts
 - [ ] Dark and Light mode
 - [ ] Fetch throttling
 - [ ] Handle caching
