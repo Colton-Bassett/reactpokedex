@@ -1,10 +1,10 @@
 ## React Pokedex
 
-[ReactPokedex](https://reactpokedex-3f2b4.web.app/) is the second part of a three-phase project to build a Pokedex app using three distinct React tech stacks. In this version, users can explore 12 randomly selected Pokémon and visit dynamic URLs to view detailed information about each one.
+[ReactPokedex](https://reactpokedex-3f2b4.web.app/) is the second part of a three-phase project to build a Pokedex app using three distinct React tech stacks. This version is a single page app that uses client side rendering to display 12 randomly selected Pokémon. Users can select Pokémon to visit dynamic URLs and view detailed information about each one.
 
-Authorized users gain access to an admin panel, where they can interact with the app's database - fetching Pokémon data from the [PokeAPI](https://pokeapi.co/), and saving, updating, or deleting Pokémon records stored in a Firebase Firestore database.
+Authorized users gain access to an admin panel, where they can interact with the app's database - fetching Pokémon data from the [PokeAPI](https://pokeapi.co/), and saving, updating, or deleting Pokémon records stored in a Firestore database.
 
-ReactPokedex is built with [React](https://react.dev/) + [Vite](https://vite.dev/) as the React framework and build tool, [Firebase](https://firebase.google.com/) for hosting, and Firebase [Firestore](https://firebase.google.com/docs/firestore) for cloud-based data storage. The app also leverages [Material UI](https://mui.com/) for Material-inspired UI components and [CSS Modules](https://github.com/css-modules/css-modules) for styling.
+React Pokedex is built with [React](https://react.dev/) + [Vite](https://vite.dev/) as the React framework and build tool, [Firebase](https://firebase.google.com/) for hosting, and Firebase [Firestore](https://firebase.google.com/docs/firestore) for cloud-based data storage. The app also leverages [Material UI](https://mui.com/) for Material-inspired UI components and [CSS Modules](https://github.com/css-modules/css-modules) for styling.
 
 ## Goals
 
