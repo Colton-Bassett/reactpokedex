@@ -56,36 +56,37 @@ firebase deploy
 
 ## Review
 
-- REACT + Vite (React Framework) - 7/10
+REACT + Vite (React Framework) - 7/10
 
-  - Pros
-    - CSR feels nice, fast, uncomplicated for smaller apps
-    - App setup with Vite is fast and easy
-    - Vite hot reload and builds are really fast
-    - Docs for core features are great
-  - Cons
-    - Needs extra libraries for a fully fleshed out experience (React Router, React Query, etc)
-    - At the mercy of library authors to keep their libraries up-to-date
-    - No native SSR
-    - No image component like next.js
-    - Docs for experimental things are just okay
+- Pros
+  - CSR feels nice, fast, uncomplicated for smaller apps
+  - App setup with Vite is fast and easy
+  - Vite hot reload and builds are really fast
+  - Docs for core features are great
+- Cons
+  - Needs extra libraries for a fully fleshed out experience (React Router, React Query, etc)
+  - At the mercy of library authors to keep their libraries up-to-date
+  - No native SSR
+  - No image component like next.js
+  - Docs for experimental things are just okay
 
-- FIREBASE (Hosting) - 7/10
+FIREBASE (Hosting) - 7/10
 
-  - Pros
-    - Easy access to a full suite of features (analytics, database, cloud, authentication)
-    - UI and UX for dashboard is great. Data communication+++
-    - Automatically utilizes a CDN, no extra setup
-    - Nearly instant deploys to production
-  - Cons
-    - Paywall for many core features (app hosting, auto github deploys, cloud functions, etc)
-    - Adds many files/overhead; in case you want to use one of their 10+ features.
-    - Confusion between Firebase hosting (static, CSR sites) vs. Firebase 'app' hosting (full stack, SSR sites)
-    - Documentation for brand new project was just okay
-    - Firestore dashboard only updates once a day. Hard to accurately track reads and writes.
-    - Github auto deploys randomly require access to all github projects (not just the firebase project)
+- Pros
+  - Easy access to a full suite of features (analytics, database, cloud, authentication)
+  - UI and UX for the dashboard is great. Data communication+++
+  - Automatically utilizes a CDN, no extra setup
+  - Nearly instant deploys to production
+- Cons
+  - Paywall for many core features (app hosting, auto github deploys, cloud functions, etc)
+  - Adds many files/overhead; in case you want to use one of their 10+ features.
+  - Confusion between Firebase hosting (static, CSR sites) vs. Firebase 'app' hosting (full stack, SSR sites)
+  - Documentation for brand new project was just okay
+  - Firestore dashboard only updates once a day. Hard to accurately track reads and writes.
+  - Github auto deploys randomly require access to all github projects (not just the firebase project)
 
-- FIRESTORE (Database) - 8/10
+FIRESTORE (Database) - 8/10
+
 - Pros
 
   - Excellent, efficient, straightforward online console interface
@@ -97,7 +98,8 @@ firebase deploy
   - Slight learning curve. Not 1:1 similar like when going from something like sqlite to postgresql
   - No way to perform some 'normal' actions like dropping a whole table with one command
 
-- MATERIAL UI (Component Library) - 3/10
+MATERIAL UI (Component Library) - 3/10
+
 - Pros
   - Provides many components for many different use cases
   - If you have time to make custom themes, MUI can look great
