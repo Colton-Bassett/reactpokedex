@@ -8,7 +8,7 @@ React Pokedex is built with [React](https://react.dev/) + [Vite](https://vite.de
 
 ## Goals
 
-1. Build a simple, full-stack application with vanilla React + Vite
+1. Build a simple, single-page application with vanilla React + Vite
 2. **Showcase new React 19 hooks and APIs by fetching from a database without useEffect or 3rd party libraries and methods**
 3. Gain a deeper understanding of React's CSR vs. Next.js's SSR and dynamic loading
 4. Get an introduction to Firestore and Firebase
@@ -17,7 +17,7 @@ React Pokedex is built with [React](https://react.dev/) + [Vite](https://vite.de
 
 ## Todo
 
-- [x] Project scaffolding (materialui, firebase, prettier, etc)
+- [x] Project scaffolding (materialUI, firebase, prettier, etc)
 - [x] Host project with Firebase Hosting
 - [x] Build out basic UI
 - [x] Implement PokeAPI calls
@@ -119,3 +119,8 @@ CSS MODULES (CSS 'framework') - 6.5/10
   - A new CSS file for every component is a lot of work and hard to keep track of
   - Consistent CSS formatting between module files is time consuming
   - Constant swapping between css and tsx files is tiring
+
+## Dev Notes
+
+- Permissions granted through Firebase Firestore @ https://console.firebase.google.com/
+- Firebase: cb
